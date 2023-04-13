@@ -1,0 +1,17 @@
+D:\Tai Lieu\Year 3 HK2\Phat trien ung dung web nang cao\BT Nhóm\PTUDQWNC\src\FurnitureShop\FurnitureShop.Services\bin\Debug\net7.0\FurnitureShop.Services.deps.json
+D:\Tai Lieu\Year 3 HK2\Phat trien ung dung web nang cao\BT Nhóm\PTUDQWNC\src\FurnitureShop\FurnitureShop.Services\bin\Debug\net7.0\FurnitureShop.Services.dll
+D:\Tai Lieu\Year 3 HK2\Phat trien ung dung web nang cao\BT Nhóm\PTUDQWNC\src\FurnitureShop\FurnitureShop.Services\bin\Debug\net7.0\FurnitureShop.Services.pdb
+D:\Tai Lieu\Year 3 HK2\Phat trien ung dung web nang cao\BT Nhóm\PTUDQWNC\src\FurnitureShop\FurnitureShop.Services\bin\Debug\net7.0\FurnitureShop.Core.dll
+D:\Tai Lieu\Year 3 HK2\Phat trien ung dung web nang cao\BT Nhóm\PTUDQWNC\src\FurnitureShop\FurnitureShop.Services\bin\Debug\net7.0\FurnitureShop.Data.dll
+D:\Tai Lieu\Year 3 HK2\Phat trien ung dung web nang cao\BT Nhóm\PTUDQWNC\src\FurnitureShop\FurnitureShop.Services\bin\Debug\net7.0\FurnitureShop.Core.pdb
+D:\Tai Lieu\Year 3 HK2\Phat trien ung dung web nang cao\BT Nhóm\PTUDQWNC\src\FurnitureShop\FurnitureShop.Services\bin\Debug\net7.0\FurnitureShop.Data.pdb
+D:\Tai Lieu\Year 3 HK2\Phat trien ung dung web nang cao\BT Nhóm\PTUDQWNC\src\FurnitureShop\FurnitureShop.Services\obj\Debug\net7.0\FurnitureShop.Services.csproj.AssemblyReference.cache
+D:\Tai Lieu\Year 3 HK2\Phat trien ung dung web nang cao\BT Nhóm\PTUDQWNC\src\FurnitureShop\FurnitureShop.Services\obj\Debug\net7.0\FurnitureShop.Services.GeneratedMSBuildEditorConfig.editorconfig
+D:\Tai Lieu\Year 3 HK2\Phat trien ung dung web nang cao\BT Nhóm\PTUDQWNC\src\FurnitureShop\FurnitureShop.Services\obj\Debug\net7.0\FurnitureShop.Services.AssemblyInfoInputs.cache
+D:\Tai Lieu\Year 3 HK2\Phat trien ung dung web nang cao\BT Nhóm\PTUDQWNC\src\FurnitureShop\FurnitureShop.Services\obj\Debug\net7.0\FurnitureShop.Services.AssemblyInfo.cs
+D:\Tai Lieu\Year 3 HK2\Phat trien ung dung web nang cao\BT Nhóm\PTUDQWNC\src\FurnitureShop\FurnitureShop.Services\obj\Debug\net7.0\FurnitureShop.Services.csproj.CoreCompileInputs.cache
+D:\Tai Lieu\Year 3 HK2\Phat trien ung dung web nang cao\BT Nhóm\PTUDQWNC\src\FurnitureShop\FurnitureShop.Services\obj\Debug\net7.0\FurnitureShop.Services.csproj.CopyComplete
+D:\Tai Lieu\Year 3 HK2\Phat trien ung dung web nang cao\BT Nhóm\PTUDQWNC\src\FurnitureShop\FurnitureShop.Services\obj\Debug\net7.0\FurnitureShop.Services.dll
+D:\Tai Lieu\Year 3 HK2\Phat trien ung dung web nang cao\BT Nhóm\PTUDQWNC\src\FurnitureShop\FurnitureShop.Services\obj\Debug\net7.0\refint\FurnitureShop.Services.dll
+D:\Tai Lieu\Year 3 HK2\Phat trien ung dung web nang cao\BT Nhóm\PTUDQWNC\src\FurnitureShop\FurnitureShop.Services\obj\Debug\net7.0\FurnitureShop.Services.pdb
+D:\Tai Lieu\Year 3 HK2\Phat trien ung dung web nang cao\BT Nhóm\PTUDQWNC\src\FurnitureShop\FurnitureShop.Services\obj\Debug\net7.0\ref\FurnitureShop.Services.dll
