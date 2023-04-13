@@ -1,0 +1,39 @@
+﻿using FurnitureShop.Core.Contracts;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace FurnitureShop.Core.Entities
+{
+    public class Product: IEntity
+    {
+        public int Id { get; set; }
+
+        public string Title { get; set; }
+
+        public string ShortDescription { get; set; }
+
+        public string Description { get; set; }
+
+        public string Meta { get; set; }
+
+        public string UrlSlug { get; set; }
+
+        public string ImageUrl { get; set; }
+
+        public int ViewCount { get; set; }
+
+        public DateTime PostedDate { get; set; }
+
+        public DateTime? ModifiedDate { get; set; }
+
+        public int CategoryId { get; set; }
+        public int ProducerId { get; set; }
+        public Category Category { get; set; }
+        public  Producer Producer { get; set; }
+
+        public IList<Tag> Tags { get; set; }
+    }
+}
