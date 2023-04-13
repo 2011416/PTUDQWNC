@@ -17,6 +17,6 @@ namespace FurnitureShop.Core.Entities
 
         public string Notes { get; set; }
 
-        public IList<Producer> Producers { get; set; }
+        public IList<Product> Products { get; set; }
     }
 }
