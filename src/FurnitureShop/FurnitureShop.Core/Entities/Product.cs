@@ -28,5 +28,12 @@ namespace FurnitureShop.Core.Entities
         public DateTime PostedDate { get; set; }
 
         public DateTime? ModifiedDate { get; set; }
+
+        public int CategoryId { get; set; }
+        public int ProducerId { get; set; }
+        public Category Category { get; set; }
+        public  Producer Producer { get; set; }
+
+        public IList<Tag> Tags { get; set; }
     }
 }

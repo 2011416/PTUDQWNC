@@ -1,6 +1,7 @@
 ﻿using FurnitureShop.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Microsoft.Identity.Client;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace FurnitureShop.Data.Mappings
     {
         public void Configure(EntityTypeBuilder<Producer> builder)
         {
-            builder.ToTable("Producer");
+            builder.ToTable("Producers");
 
             builder.HasKey(a => a.Id);
 
@@ -27,6 +28,7 @@ namespace FurnitureShop.Data.Mappings
 
             builder.Property(a => a.Notes)
                 .HasMaxLength(500);
+
         }
     }
 }

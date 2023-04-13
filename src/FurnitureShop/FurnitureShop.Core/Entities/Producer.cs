@@ -16,5 +16,7 @@ namespace FurnitureShop.Core.Entities
         public string UrlSlug { get; set; }
 
         public string Notes { get; set; }
+
+        public IList<Producer> Producers { get; set; }
     }
 }

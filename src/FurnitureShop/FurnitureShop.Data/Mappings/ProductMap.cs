@@ -22,13 +22,13 @@ namespace FurnitureShop.Data.Mappings
                .IsRequired();
 
             builder.Property(p => p.ShortDescription)
-                .HasMaxLength(500);
+                .HasMaxLength(5000);
 
             builder.Property(p => p.Description)
                 .HasMaxLength(5000);
 
             builder.Property(p => p.UrlSlug)
-              .HasMaxLength(50)
+              .HasMaxLength(200)
               .IsRequired();
 
             builder.Property(p => p.Meta)
@@ -45,21 +45,24 @@ namespace FurnitureShop.Data.Mappings
             builder.Property(p => p.PostedDate)
                .HasColumnType("datetime");
 
-            //builder.HasOne(p => p.Category)
-            //    .WithMany(c => c.Products)
-            //    .HasForeignKey(p => p.CategoryId)
-            //    .HasConstraintName("FK_Products_Categories")
-            //    .OnDelete(DeleteBehavior.Cascade);
+            builder.Property(p => p.ModifiedDate)
+                .HasColumnType("datetime");
 
-            //builder.HasOne(p => p.Producer)
-            //    .WithMany(a => a.Products)
-            //    .HasForeignKey(p => p.ProducerId)
-            //    .HasConstraintName("FK_Products_Producer")
-            //    .OnDelete(DeleteBehavior.Cascade);
+            builder.HasOne(p => p.Category)
+                .WithMany(c => c.Products)
+                .HasForeignKey(p => p.CategoryId)
+                .HasConstraintName("FK_Products_Categories")
+                .OnDelete(DeleteBehavior.Cascade);
 
-            //builder.HasMany(p => p.Tags)
-            //    .WithMany(t => t.Products)
-            //    .UsingEntity(pt => pt.ToTable("ProductTags"));
+            builder.HasOne(p => p.Producer)
+                .WithMany(a => a.Products)
+                .HasForeignKey(p => p.ProducerId)
+                .HasConstraintName("FK_Products_Producer")
+                .OnDelete(DeleteBehavior.Cascade);
+
+            builder.HasMany(p => p.Tags)
+                .WithMany(t => t.Products)
+                .UsingEntity(pt => pt.ToTable("ProductTags"));
 
         }
     }
