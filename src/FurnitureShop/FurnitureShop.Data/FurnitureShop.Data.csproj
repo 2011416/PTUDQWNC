@@ -15,8 +15,4 @@
     <ProjectReference Include="..\FurnitureShop.Core\FurnitureShop.Core.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Seeders\" />
-  </ItemGroup>
-
 </Project>
