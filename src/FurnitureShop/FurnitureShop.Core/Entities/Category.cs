@@ -17,6 +17,8 @@ namespace FurnitureShop.Core.Entities
 
         public string UrlSlug { get; set; }
 
+        public bool ShowOnMenu { get; set; }
+
         public IList<Product> Products { get; set;}
      
     }

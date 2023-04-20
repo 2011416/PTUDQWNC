@@ -1,6 +1,8 @@
-﻿using FurnitureShop.Core.DTO;
+﻿using FurnitureShop.Core.Contracts;
+using FurnitureShop.Core.DTO;
 using FurnitureShop.Core.Entities;
 using FurnitureShop.Data.Contexts;
+using FurnitureShop.Services.Extensions;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -10,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace FurnitureShop.Services.Blogs
 {
-    public class StoreRepository
+    public class StoreRepository : IStoreRepository
     {
         private readonly StoreDbContext _context;
 
@@ -19,60 +21,65 @@ namespace FurnitureShop.Services.Blogs
             _context = context;
         }
 
-        //    public async Task<Post> GetPostAsync(int year, int month, string slug, CancellationToken cancellationToken = default)
-        //    {
-        //        IQueryable<Post> postsQuery = _context.Set<Post>()
-        //            .Include(x => x.Category)
-        //            .Include(x => x.Author);
+        public async Task<Product> GetProductAsync(int year, int month, string slug, CancellationToken cancellationToken = default)
+        {
+            IQueryable<Product> productsQuery = _context.Set<Product>()
+                .Include(x => x.Category)
+                .Include(x => x.Producer);
 
-        //        if (year > 0)
-        //        {
-        //            postsQuery = postsQuery.Where(x => x.PostedDate.Year == year);
-        //        }
+            if (year > 0)
+            {
+                productsQuery = productsQuery.Where(x => x.PostedDate.Year == year);
+            }
 
-        //        if (month > 0)
-        //        {
-        //            postsQuery = postsQuery.Where(x => x.PostedDate.Month == month);
-        //        }
+            if (month > 0)
+            {
+                productsQuery = productsQuery.Where(x => x.PostedDate.Month == month);
+            }
 
-        //        if (!string.IsNullOrEmpty(slug))
-        //        {
-        //            postsQuery = postsQuery.Where(x => x.UrlSlug == slug);
-        //        }
+            if (!string.IsNullOrEmpty(slug))
+            {
+                productsQuery = productsQuery.Where(x => x.UrlSlug == slug);
+            }
 
-        //        return await postsQuery.FirstOrDefaultAsync(cancellationToken);
-        //    }
+            return await productsQuery.FirstOrDefaultAsync(cancellationToken);
+        }
 
-        //    public async Task<IList<Post>> GetPopularArticlesAsync(int numPosts, CancellationToken cancellationToken = default)
-        //    {
-        //        return await _context.Set<Post>()
-        //            .Include(x => x.Author)
-        //            .Include(x => x.Category)
-        //            .OrderByDescending(p => p.ViewCount)
-        //            .Take(numPosts)
-        //            .ToListAsync(cancellationToken);
-        //    }
+        public async Task<IList<Product>> GetPopularProductsAsync(int num, CancellationToken cancellationToken = default)
+        {
+            return await _context.Set<Product>()
+                .Include(x => x.Producer)
+                .Include(x => x.Category)
+                .OrderByDescending(p => p.ViewCount)
+                .Take(num)
+                .ToListAsync(cancellationToken);
+        }
 
-        //    public async Task<bool> IsPostSlugExistedAsync(int postId, string slug, CancellationToken cancellationToken = default)
-        //    {
-        //        return await _context.Set<Post>()
-        //            .AnyAsync(x => x.Id != postId && x.UrlSlug == slug,
-        //                cancellationToken);
-        //    }
+        public async Task<bool> IsPostSlugExistedAsync(int productId, string slug, CancellationToken cancellationToken = default)
+        {
+            return await _context.Set<Product>()
+                .AnyAsync(x => x.Id != productId && x.UrlSlug == slug,
+                    cancellationToken);
+        }
 
-        //    public async Task IncreaseViewCountAsync(int postId, CancellationToken cancellationToken = default)
-        //    {
-        //        await _context.Set<Post>()
-        //            .Where(x => x.Id == postId)
-        //            .ExecuteUpdateAsync(p =>
-        //            p.SetProperty(x => x.ViewCount, x => x.ViewCount + 1),
-        //            cancellationToken);
-        //    }
+        public async Task IncreaseViewCountAsync(int productId, CancellationToken cancellationToken = default)
+        {
+            await _context.Set<Product>()
+                .Where(x => x.Id == productId)
+                .ExecuteUpdateAsync(p =>
+                p.SetProperty(x => x.ViewCount, x => x.ViewCount + 1),
+                cancellationToken);
+        }
 
-        public async Task<IList<CategoryItem>> GetCategoriesAsync(CancellationToken cancellationToken = default)
+        public async Task<IList<CategoryItem>> GetCategoriesAsync(bool showOnMenu = false, CancellationToken cancellationToken = default)
         {
             IQueryable<Category> categories = _context.Set<Category>();
-       
+
+            if (showOnMenu)
+            {
+                categories = categories.Where(x => x.ShowOnMenu);
+            }
+
             return await categories
                 .OrderBy(x => x.Name)
                 .Select(x => new CategoryItem()
@@ -81,26 +88,27 @@ namespace FurnitureShop.Services.Blogs
                     Name = x.Name,
                     UrlSlug = x.UrlSlug,
                     Description = x.Description,
+                    ShowOnMenu = x.ShowOnMenu,
                     PostCount = x.Products.Count
                 })
                 .ToListAsync(cancellationToken);
         }
 
-        //    public async Task<IPagedList<TagItem>> GetPagedTagsAsync(IPagingParams pagingParams, CancellationToken cancellationToken = default)
-        //    {
-        //        var tagQuery = _context.Set<Tag>()
-        //            .Select(x => new TagItem()
-        //            {
-        //                Id = x.Id,
-        //                Name = x.Name,
-        //                UrlSlug = x.UrlSlug,
-        //                Description = x.Description,
-        //                PostCount = x.Posts.Count(p => p.Published)
-        //            });
+        public async Task<IPagedList<TagItem>> GetPagedTagsAsync(IPagingParams pagingParams, CancellationToken cancellationToken = default)
+        {
+            var tagQuery = _context.Set<Tag>()
+                .Select(x => new TagItem()
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    UrlSlug = x.UrlSlug,
+                    Description = x.Description,
+                    ProductCount = x.Products.Count
+                });
 
-        //        return await tagQuery
-        //            .ToPagedListAsync(pagingParams, cancellationToken);
-        //    }
+            return await tagQuery
+                .ToPagedListAsync(pagingParams, cancellationToken);
+        }
     }
 }
 
