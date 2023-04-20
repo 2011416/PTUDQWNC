@@ -10,3 +10,6 @@
 /src/FurnitureShop/FurnitureShop.Services/obj
 /src/FurnitureShop/FurnitureShop.WinApp/obj/Debug/net7.0
 /src/FurnitureShop/FurnitureShop.WinApp/obj
+/src/FurnitureShop/.vs/FurnitureShop/v17
+/src/FurnitureShop/FurnitureShop.Core/bin/Debug/net7.0
+/src/FurnitureShop/FurnitureShop.Data/bin/Debug/net7.0
