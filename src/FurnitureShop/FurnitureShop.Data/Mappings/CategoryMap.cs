@@ -28,6 +28,10 @@ namespace FurnitureShop.Data.Mappings
               .HasMaxLength(50)
               .IsRequired();
 
+            builder.Property(c => c.ShowOnMenu)
+                .IsRequired()
+                .HasDefaultValue(false);
+
         }
     }
 }

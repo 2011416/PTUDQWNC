@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace FurnitureShop.Data.Contexts
 {
-    public class BlogDbContext : DbContext
+    public class StoreDbContext : DbContext
     {
         public DbSet<Producer> Producers { get; set; }
         public DbSet<Category> Categories { get; set; }
