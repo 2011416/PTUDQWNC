@@ -1,0 +1,6 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/src/FurnitureShop/.vs/FurnitureShop/FileContentIndex/689affb4-7e65-4def-b0b0-f8124483eb2e.vsidx
+*.vsidx
