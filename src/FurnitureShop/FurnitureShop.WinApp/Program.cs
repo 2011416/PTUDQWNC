@@ -1,7 +1,7 @@
 ﻿using FurnitureShop.Data.Contexts;
 using FurnitureShop.Data.Seeders;
 
-var context = new BlogDbContext();
+var context = new StoreDbContext();
 
 var seeder = new DataSeeder(context);
 

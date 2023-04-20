@@ -10,9 +10,9 @@ namespace FurnitureShop.Data.Seeders
 {
     public class DataSeeder : IDataSeeder
     {
-        private readonly BlogDbContext _dbContext;
+        private readonly StoreDbContext _dbContext;
 
-        public DataSeeder(BlogDbContext dbContext)
+        public DataSeeder(StoreDbContext dbContext)
         {
             _dbContext = dbContext;
         }

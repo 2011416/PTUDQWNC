@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FurnitureShop.Data.Migrations
 {
-    [DbContext(typeof(BlogDbContext))]
+    [DbContext(typeof(StoreDbContext))]
     partial class BlogDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
