@@ -4,3 +4,9 @@
 
 /src/FurnitureShop/.vs/FurnitureShop/FileContentIndex/689affb4-7e65-4def-b0b0-f8124483eb2e.vsidx
 *.vsidx
+/src/FurnitureShop/.vs/FurnitureShop/FileContentIndex
+/src/FurnitureShop/FurnitureShop.Core/obj
+/src/FurnitureShop/FurnitureShop.Data/obj
+/src/FurnitureShop/FurnitureShop.Services/obj
+/src/FurnitureShop/FurnitureShop.WinApp/obj/Debug/net7.0
+/src/FurnitureShop/FurnitureShop.WinApp/obj
