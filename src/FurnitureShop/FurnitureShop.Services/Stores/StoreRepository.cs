@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FurnitureShop.Services.Blogs
 {
-    internal class BlogRepository
+    public class StoreRepository
     {
     }
 }
