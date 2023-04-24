@@ -12,8 +12,8 @@ const Layout = () => {
   return (
     <BrowserRouter>
       <div>
+      <Header/>
         <div className="container">
-          <Header/>
           <div className="main">
             <Switchs/>
           </div>
