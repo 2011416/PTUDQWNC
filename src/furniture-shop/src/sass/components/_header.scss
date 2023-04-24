@@ -61,11 +61,11 @@
 
         &__item.active {
             font-weight: 600;
-            color: $main-color;
+            color: rgb(255, 87, 51);
         }
 
         &__item:hover {
-            color: $main-color;
+            color: rgb(185, 38, 6);
         }
 
         &__left,

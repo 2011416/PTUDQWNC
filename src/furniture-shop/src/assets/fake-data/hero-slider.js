@@ -4,24 +4,24 @@ const img3 = require("../images/slider/slide_3.png").default
 
 const heroSliderData = [
     {
-        title: "Polo nữ Pima cao cấp",
-        description: "Nhắc đến sự đẳng cấp là không thể không nhắc đến dòng vải pima. Nó tạo nên chất lượng tốt nhất cho bất kỳ sản phẩm thời trang nào. Sợi vải pima dài và dày hơn sợi cotton thông thường gấp đôi nhờ công nghệ dệt tân tiến. Điều đó làm cho kết cấu áo polo chắc chắn, bền chặt, hạn chế tối đa xù lông, mềm mượt, bền màu, vô cùng đảm bảo sức khoẻ người dùng",
+        title: "Bàn trang điểm cao cấp",
+        description: "Nhắc đến sự đẳng cấp là không thể không nhắc đến bàn pima. Với chất lượng tốt nhất. Pima nhờ công nghệ dệt tân tiến, điều đó làm cho kết cấu  bền chặt, hạn chế tối đa hư hỏng, bền màu.",
         img: img1,
         color: "blue",
-        path: "/catalog/ao-thun-dinosaur-01"
+        path: "/catalog/ban-trang-diem-1"
     },
     {
-        title: "Polo Nữ Dáng Suông Modal",
-        description: "Polo nữ dáng suông Modal sử dụng công nghệ vải cao cấp thân thiện với môi trường sản xuất độc quyền chống co rút vải, áo polo nữ vải modal là sản phẩm thích hợp cho các bạn có môi trường làm việc năng động như hiện nay",
+        title: "Ghế gỗ quầy bar",
+        description: "Ghế quầy bar  với chất liệu gỗ chưa bao giờ hạ nhiệt trong xu hướng thiết kế nội thất hiện đại. Không chỉ nghĩ đến quầy bar ấm phòng bếp, mà còn ở quy mô lớn hớn hơn: khách sạn, resort, nhà hàng, quán cafe, quán bar...",
         img: img2,
-        path: "/catalog/ao-thun-dinosaur-02",
+        path: "/catalog/ghe-go-quay-bar",
         color: "pink"
     },
     {
-        title: "Polo Nữ Coolmax Lacoste",
-        description: "Mẫu áo polo nữ được làm bằng chất liệu coolmax đem lại cảm giác mát lạnh khi mặc. Thiết kế mẫu áo polo coolmax này có kiểu dáng cực kỳ thoải mái. Tạo sự gọn gàng hứa hẹn sẽ là mẫu áo polo vô cùng hot trong thời điểm sắp tới",
+        title: "Ghế Neva",
+        description: "Ghế Neva là tác phẩm đã đạt được giải quán quân trong cuộc thi Interior Innovation Award vào năm 2015, mẫu ghế Neva của nhóm tác giả trẻ Ruder Novak-Milulic và Marija Ruzic tạo ra. Đây là một sản phẩm với thiết kế đơn giản nhưng đầy tính nghệ thuật, duyên dáng. ",
         img: img3,
-        path: "/catalog/ao-thun-dinosaur-03",
+        path: "/catalog/ghe-go-neva",
         color: "orange"
     }
 ]
