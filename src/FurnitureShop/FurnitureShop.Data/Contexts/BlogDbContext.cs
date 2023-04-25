@@ -16,10 +16,10 @@ namespace FurnitureShop.Data.Contexts
         public DbSet<Product> Products { get; set; }
         public DbSet<Tag> Tags { get; set; }
 
-        protected override void OnConfiguring(
-            DbContextOptionsBuilder optionsBuilder)
+       public BlogDbContext(DbContextOptions<BlogDbContext> options) : base(options) { }
+        public BlogDbContext()
         {
-            optionsBuilder.UseSqlServer(@"Server=DESKTOP-C0NGQA5;Database=FurnitureShop;Trusted_Connection=True;MultipleActiveResultSets=true;TrustServerCertificate=True");
+
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

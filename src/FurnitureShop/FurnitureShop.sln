@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FurnitureShop.Core", "FurnitureShop.Core\FurnitureShop.Core.csproj", "{3886D18F-8DF6-4D89-93EE-E6982209F3E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FurnitureShop.Core", "FurnitureShop.Core\FurnitureShop.Core.csproj", "{3886D18F-8DF6-4D89-93EE-E6982209F3E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FurnitureShop.Data", "FurnitureShop.Data\FurnitureShop.Data.csproj", "{C434C069-8EB9-42F0-B289-89026373ECD0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FurnitureShop.Data", "FurnitureShop.Data\FurnitureShop.Data.csproj", "{C434C069-8EB9-42F0-B289-89026373ECD0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FurnitureShop.Services", "FurnitureShop.Services\FurnitureShop.Services.csproj", "{D43460B5-E081-4796-A0E8-00EA03C362C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FurnitureShop.Services", "FurnitureShop.Services\FurnitureShop.Services.csproj", "{D43460B5-E081-4796-A0E8-00EA03C362C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FurnitureShop.WinApp", "FurnitureShop.WinApp\FurnitureShop.WinApp.csproj", "{8333EE39-B519-4BFA-A0EC-53002E25E5DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FurnitureShop.WinApp", "FurnitureShop.WinApp\FurnitureShop.WinApp.csproj", "{8333EE39-B519-4BFA-A0EC-53002E25E5DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FurnitureShop.WebAPI", "FurnitureShop.WebAPI\FurnitureShop.WebAPI.csproj", "{7EC1DA2A-59CF-4282-AF72-161494A54A3F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{8333EE39-B519-4BFA-A0EC-53002E25E5DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8333EE39-B519-4BFA-A0EC-53002E25E5DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8333EE39-B519-4BFA-A0EC-53002E25E5DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EC1DA2A-59CF-4282-AF72-161494A54A3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EC1DA2A-59CF-4282-AF72-161494A54A3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EC1DA2A-59CF-4282-AF72-161494A54A3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EC1DA2A-59CF-4282-AF72-161494A54A3F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
