@@ -1,18 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 
-import { useNavigate } from 'react-router';
+import { withRouter } from 'react-router'
 
 import Button from './Button'
 import numberWithCommas from '../utils/numberWithCommas'
 
-export const withRouter = (Component) =>{
-    const Wrapper = (props) =>{
-        const history = useNavigate();
-        return <Component history={history} {...props}/>
-    } 
-    return Wrapper;
-}
 
 const ProductView = props => {
 

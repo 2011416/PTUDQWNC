@@ -178,7 +178,7 @@ const getProducts = (count) => {
     return products.slice(start, start + count)
 }
 
-const getProductBySlug = (slug) => products.find((e) => e._slug === (slug))
+const getProductBySlug = (slug) => products.find(e => e.slug === slug)
 
 const productData = {
     getAllProducts,
