@@ -9,7 +9,14 @@ import numberWithCommas from '../utils/numberWithCommas'
 
 const ProductView = props => {
 
-    const product = props.product
+    let product = props.product
+
+    if (product === undefined) product = {
+        title: "",
+        price: 0,
+        colors: [],
+        size: [],
+    }
 
     const [previewImg, setPreviewImg] = useState(product.image01)
 
