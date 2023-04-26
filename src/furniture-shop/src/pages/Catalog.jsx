@@ -166,6 +166,9 @@ const Catalog = () => {
                   </div>
 
         </div>
+        <div className="catalog__filter__toggle">
+        <Button size="sm" onClick={() => showHideFilter()}>bộ lọc</Button>
+        </div>
         <div className="catalog__content">
             <Grid
                col={3}
