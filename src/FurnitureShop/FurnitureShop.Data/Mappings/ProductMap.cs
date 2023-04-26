@@ -16,53 +16,37 @@ namespace FurnitureShop.Data.Mappings
             builder.ToTable("Product");
 
             builder.HasKey(p => p.Id);
-
-            builder.Property(p => p.Title)
-               .HasMaxLength(100)
-               .IsRequired();
-
-            builder.Property(p => p.ShortDescription)
-                .HasMaxLength(5000);
-
-            builder.Property(p => p.Description)
-                .HasMaxLength(5000);
-
-            builder.Property(p => p.UrlSlug)
-              .HasMaxLength(200)
-              .IsRequired();
-
-            builder.Property(p => p.Meta)
-             .HasMaxLength(1000)
-             .IsRequired();
-
-            builder.Property(p => p.ImageUrl)
-                .HasMaxLength(1000);
-
-            builder.Property(p => p.ViewCount)
+            builder.Property(p => p.Name)
                 .IsRequired()
-                .HasDefaultValue(0);
+                .HasMaxLength(100);
+            builder.Property(p => p.UrlSlug)
+                .IsRequired()
+                .HasMaxLength(100);
+            builder.Property(p => p.Price)
+                .IsRequired()
+                .HasMaxLength(100);
+            builder.Property(p => p.Material)
+          
+                .HasMaxLength(100);
+          
+            builder.Property(p => p.Collection)
+            
+                .HasMaxLength(100);
+            builder.Property(p => p.Description)
+                .IsRequired()
+                .HasMaxLength(200);
+            builder.HasKey(p => p.Id);
+            builder.Property(p => p.UrlImage)
+                .HasMaxLength(1000);
+            builder.HasOne(p => p.User)
+                   .WithMany(u => u.Products)
+                   .HasForeignKey(p => p.UserId)
+                   .HasConstraintName("FK_Users_Products")
+                   .OnDelete(DeleteBehavior.Cascade);
+            builder.HasMany(p => p.Categories)
+                .WithMany(u => u.Products)
+                .UsingEntity(pu => pu.ToTable("ProductsCategories"));
 
-            builder.Property(p => p.PostedDate)
-               .HasColumnType("datetime");
-
-            builder.Property(p => p.ModifiedDate)
-                .HasColumnType("datetime");
-
-            builder.HasOne(p => p.Category)
-                .WithMany(c => c.Products)
-                .HasForeignKey(p => p.CategoryId)
-                .HasConstraintName("FK_Products_Categories")
-                .OnDelete(DeleteBehavior.Cascade);
-
-            builder.HasOne(p => p.Producer)
-                .WithMany(a => a.Products)
-                .HasForeignKey(p => p.ProducerId)
-                .HasConstraintName("FK_Products_Producer")
-                .OnDelete(DeleteBehavior.Cascade);
-
-            builder.HasMany(p => p.Tags)
-                .WithMany(t => t.Products)
-                .UsingEntity(pt => pt.ToTable("ProductTags"));
 
         }
     }

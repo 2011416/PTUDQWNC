@@ -70,6 +70,24 @@ namespace ManageProject.API.Extensions
             app.UseCors("ManageProjectApp");
             return app;
         }
+        public static IApplicationBuilder UsingDataSeeder(this IApplicationBuilder app)
+        {
+            using var scope = app.ApplicationServices.CreateScope();
+            try
+            {
+                scope.ServiceProvider
+                    .GetRequiredService<IDataSeeder>()
+                    .Initialize();
+
+            }
+            catch (Exception ex)
+            {
+                scope.ServiceProvider
+                    .GetRequiredService<ILogger<Program>>()
+                    .LogError(ex, "Couldn't insert data into database");
+            }
+            return app;
+        }
 
     }
    
