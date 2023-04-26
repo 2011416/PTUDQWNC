@@ -2,6 +2,7 @@
 using FurnitureShop.Data.Contexts;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -88,7 +89,13 @@ namespace FurnitureShop.Data.Seeders
 
 
             };
-            _dbContext.Categories.AddRange(categories);
+            foreach (var category in categories)
+            {
+                if (!_dbContext.Categories.Any(a => a.UrlSlug == category.UrlSlug))
+                {
+                    _dbContext.Categories.Add(category);
+                }
+            }
             _dbContext.SaveChanges();
             return categories;
 
@@ -110,7 +117,13 @@ namespace FurnitureShop.Data.Seeders
                   User= users[1]
                 },
             };
-            _dbContext.Deliveries.AddRange(deliveries);
+            foreach (var deliver in deliveries)
+            {
+                if (!_dbContext.Deliveries.Any(a => a.UrlSlug == deliver.UrlSlug))
+                {
+                    _dbContext.Deliveries.Add(deliver);
+                }
+            }
             _dbContext.SaveChanges();
             return deliveries;
             
@@ -170,7 +183,13 @@ namespace FurnitureShop.Data.Seeders
 
 
             };
-            _dbContext.Products.AddRange(products);
+            foreach (var product in products)
+            {
+                if (!_dbContext.Products.Any(a => a.UrlSlug == product.UrlSlug))
+                {
+                    _dbContext.Products.Add(product);
+                }
+            }
             _dbContext.SaveChanges();
             return products;    
         }
@@ -191,7 +210,13 @@ namespace FurnitureShop.Data.Seeders
 
                 }
             };
-            _dbContext.Roles.AddRange(roles);
+            foreach (var role in roles)
+            {
+                if (!_dbContext.Roles.Any(a => a.UrlSlug == role.UrlSlug))
+                {
+                    _dbContext.Roles.Add(role);
+                }
+            }
             _dbContext.SaveChanges();
             return roles;
         
@@ -253,7 +278,13 @@ namespace FurnitureShop.Data.Seeders
 
 
             };
-            _dbContext.Users.AddRange(users);
+            foreach (var user in users)
+            {
+                if (!_dbContext.Users.Any(a => a.UrlSlug == user.UrlSlug))
+                {
+                    _dbContext.Users.Add(user);
+                }
+            }
             _dbContext.SaveChanges();
             return users;
             
