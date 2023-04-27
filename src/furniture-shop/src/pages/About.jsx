@@ -3,7 +3,7 @@ import Helmet from '../components/Helmet';
 import { Link } from 'react-router-dom';
 import banner from "../assets/images/banner.png"
 
-const AboutPage = () => {
+const About = () => {
   return (
     <Helmet title="Giới thiệu">
     <div className="about-page">
@@ -21,4 +21,4 @@ const AboutPage = () => {
   );
 };
 
-export default AboutPage;
+export default About;

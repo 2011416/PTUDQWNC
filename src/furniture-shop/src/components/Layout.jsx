@@ -1,30 +1,28 @@
 import React from 'react'
 
-import { BrowserRouter, Route } from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom';
 
 import Header from './Header'
 import Footer from './Footer'
 
 import ProductViewModal from './ProductViewModal'
 
-import Routes from '../routes/Routes'
+import Switchs from '../routes/Switchs'
 
 const Layout = () => {
     return (
-        <BrowserRouter>
-            <Route render={props => (
+        <Router>
                 <div>
-                    <Header {...props}/>
+                    <Header/>
                     <div className="container">
                         <div className="main">
-                            <Routes/>
+                            <Switchs/>
                         </div>
                     </div>
                     <Footer/>
                     <ProductViewModal />
                 </div>
-            )}/>
-        </BrowserRouter>
+        </Router>
     )
 }
 

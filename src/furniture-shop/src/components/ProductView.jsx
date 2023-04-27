@@ -6,15 +6,36 @@ import { useDispatch } from 'react-redux'
 import { addItem } from '../redux/shopping-cart/cartItemsSlide'
 import { remove } from '../redux/product-modal/productModalSlice'
 
-import { withRouter } from 'react-router'
 
 import Button from './Button'
 import numberWithCommas from '../utils/numberWithCommas'
 
-
+import {
+    useLocation,
+    useNavigate,
+    useParams
+  } from "react-router-dom";
+  
+  function withRouter(Component) {
+    function ComponentWithRouterProp(props) {
+      let location = useLocation();
+      let navigate = useNavigate();
+      let params = useParams();
+      return (
+        <Component
+          {...props}
+          router={{ location, navigate, params }}
+        />
+      );
+    }
+  
+    return ComponentWithRouterProp;
+  }
 
 
 const ProductView = props => {
+
+    let navigate = useNavigate();
 
     const dispatch =useDispatch()
 
@@ -90,6 +111,7 @@ const ProductView = props => {
 
     const goToCart = () => {
         if (check()) {
+
             let newItem = {
                 slug: product.slug,
                 color: color,
@@ -99,7 +121,7 @@ const ProductView = props => {
             }
             if (dispatch(addItem(newItem))) {
                 dispatch(remove())
-                props.history.push('/cart')
+                navigate('/cart')
             } else {
                 alert('Fail')
             }
