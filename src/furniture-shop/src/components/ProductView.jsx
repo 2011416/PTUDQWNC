@@ -1,21 +1,35 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 
+import { useDispatch } from 'react-redux'
+
+import { addItem } from '../redux/shopping-cart/cartItemsSlide'
+import { remove } from '../redux/product-modal/productModalSlice'
+
 import { withRouter } from 'react-router'
 
 import Button from './Button'
 import numberWithCommas from '../utils/numberWithCommas'
 
 
+
+
 const ProductView = props => {
+
+    const dispatch =useDispatch()
 
     let product = props.product
 
     if (product === undefined) product = {
         title: "",
-        price: 0,
+        price: '',
+        image01: null,
+        image02: null,
+        categorySlug: "",
         colors: [],
+        slug: "",
         size: [],
+        description: ""
     }
 
     const [previewImg, setPreviewImg] = useState(product.image01)
@@ -58,13 +72,38 @@ const ProductView = props => {
     }
 
     const addToCart = () => {
-        if (check()) 
-            console.log({color, size, quantity})
+        if (check()) {
+            let newItem = {
+                slug: product.slug,
+                color: color,
+                size: size,
+                price: product.price,
+                quantity: quantity
+            }
+            if (dispatch(addItem(newItem))) {
+                alert('Success')
+            } else {
+                alert('Fail')
+            }
+        }
     }
 
     const goToCart = () => {
-        if (check()) 
-            props.history.push('/cart')        
+        if (check()) {
+            let newItem = {
+                slug: product.slug,
+                color: color,
+                size: size,
+                price: product.price,
+                quantity: quantity
+            }
+            if (dispatch(addItem(newItem))) {
+                dispatch(remove())
+                props.history.push('/cart')
+            } else {
+                alert('Fail')
+            }
+        }
     }
 
     return (
