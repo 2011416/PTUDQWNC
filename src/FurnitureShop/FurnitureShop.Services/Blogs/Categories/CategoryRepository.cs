@@ -106,41 +106,9 @@ namespace FurnitureShop.Services.Blogs.Categories
             return await userQuery.FirstOrDefaultAsync(cancellationToken);
         }
 
-        public async Task<bool> CreateOrUpdateCategoryAsync(Category category, IEnumerable<string> products, CancellationToken cancellationToken = default)
+        public async Task<bool> CreateOrUpdateCategoryAsync(Category category, CancellationToken cancellationToken = default)
         {
-            if (category.Id > 0)
-            {
-                await _context.Entry(category).Collection(x => x.Products).LoadAsync(cancellationToken);
-            }
-            else
-            {
-                category.Products = new List<Product>();
-            }
-
-            var validProduct = products.Where(x => !string.IsNullOrEmpty(x))
-                .Select(x => new
-                {
-                    Name = x,
-                    Slug = x.GenerateSlug(),
-                })
-                .GroupBy(x => x.Slug)
-                .ToDictionary(g => g.Key, g => g.First().Name);
-
-            foreach (var item in validProduct)
-            {
-                if (category.Products.Any(x => string.Compare(x.UrlSlug, item.Key, StringComparison.InvariantCultureIgnoreCase) == 0)) continue;
-
-                var users = await GetProductSlugAsync(item.Key, cancellationToken) ?? new Product()
-                {
-                    Name = item.Value,
-                    Price = item.Value,
-                    UrlSlug = item.Key,
-                };
-
-                category.Products.Add(users);
-            }
-            category.Products = category.Products.Where(u => validProduct.ContainsKey(u.UrlSlug)).ToList();
-
+          
             if (category.Id > 0)
             {
                 _context.Update(category);

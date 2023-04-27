@@ -22,7 +22,7 @@ namespace FurnitureShop.Services.Blogs.Categories
         Task<bool> DeleteCategoryByIdAsync(int id, CancellationToken cancellationToken = default);
         Task<Category> GetCategoryBySlugAsync(string slug, CancellationToken cancellationToken = default);
         Task<Category> GetCategoryByIdIsDetailAsync(int id, bool isDetail = false, CancellationToken cancellationToken = default);
-        Task<bool> CreateOrUpdateCategoryAsync(Category category, IEnumerable<string> products, CancellationToken cancellationToken = default);
+        Task<bool> CreateOrUpdateCategoryAsync(Category category, CancellationToken cancellationToken = default);
         Task<Product> GetProductSlugAsync(string slug, CancellationToken cancellationToken = default);
 
     }
