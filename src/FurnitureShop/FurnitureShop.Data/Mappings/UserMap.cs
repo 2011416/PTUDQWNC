@@ -29,10 +29,10 @@ namespace FurnitureShop.Data.Mappings
               .IsRequired()
               .HasMaxLength(100);
             builder.Property(c => c.Adress)
-              .IsRequired()
+              
               .HasMaxLength(500);
             builder.Property(c => c.phoneNumber)
-              .IsRequired()
+              
               .HasMaxLength(100);
             builder.HasOne(u => u.Role)
                  .WithMany(r => r.Users)

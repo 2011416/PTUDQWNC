@@ -31,10 +31,10 @@ namespace FurnitureShop.Data.Mappings
           
             builder.Property(p => p.Collection)
             
-                .HasMaxLength(100);
+                .HasMaxLength(1000);
             builder.Property(p => p.Description)
                 .IsRequired()
-                .HasMaxLength(200);
+                .HasMaxLength(10000);
             builder.HasKey(p => p.Id);
             builder.Property(p => p.UrlImage)
                 .HasMaxLength(1000);

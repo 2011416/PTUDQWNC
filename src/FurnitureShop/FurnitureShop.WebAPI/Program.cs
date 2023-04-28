@@ -21,6 +21,6 @@ var app = builder.Build();
     app.UsingDataSeeder();
     app.MapCategoryEndpoints();
     app.MapRoleEndPoints();
-
+    app.MapUserEndpoints();
     app.Run();
 }
