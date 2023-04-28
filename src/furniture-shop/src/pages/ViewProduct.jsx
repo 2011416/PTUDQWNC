@@ -9,7 +9,7 @@ import ProductView from '../components/ProductView'
 
 import productData from '../assets/fake-data/product'
 
-function Product(){
+function ViewProduct(){
 
     const {slug} =useParams();
 
@@ -58,4 +58,4 @@ function Product(){
     )
 }
 
-export default Product
+export default ViewProduct
