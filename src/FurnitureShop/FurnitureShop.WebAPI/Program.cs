@@ -20,6 +20,7 @@ var app = builder.Build();
     app.SetupRequestPipeline();
     app.UsingDataSeeder();
     app.MapCategoryEndpoints();
+    app.MapRoleEndPoints();
 
     app.Run();
 }

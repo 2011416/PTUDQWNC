@@ -11,6 +11,8 @@
     <ProjectReference Include="..\FurnitureShop.Data\FurnitureShop.Data.csproj" />
   </ItemGroup>
 	<ItemGroup>
+		<Folder Include="Blogs\Deliveries\" />
+		<Folder Include="Blogs\Products\" />
 		<Folder Include="Rss\" />
 	</ItemGroup>
 

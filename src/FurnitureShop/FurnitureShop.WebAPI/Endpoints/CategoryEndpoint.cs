@@ -43,6 +43,11 @@ namespace FurnitureShop.WebAPI.Endpoints
                 .Accepts<CategoryEditModel>("multipart/form-data")
                 .Produces(401)
                 .Produces<ApiResponse<CategoryItem>>();
+            routeGroupBuilder.MapPut("/", AddOrUpdateCategories)
+               .WithName("UpdateCategory")
+               .Accepts<CategoryEditModel>("multipart/form-data")
+               .Produces(401)
+               .Produces<ApiResponse<CategoryItem>>();
 
             return app;
         }

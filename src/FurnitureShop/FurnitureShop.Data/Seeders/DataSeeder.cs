@@ -205,7 +205,7 @@ namespace FurnitureShop.Data.Seeders
                  new()
                 {
                     Name= "Admin",
-                    UrlSlug= "amin",
+                    UrlSlug= "admin",
                     Description= "Tài khoản dành cho admin",
 
                 }
