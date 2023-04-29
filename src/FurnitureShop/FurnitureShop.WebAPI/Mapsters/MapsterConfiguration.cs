@@ -15,7 +15,7 @@ namespace FurnitureShop.WebAPI.Mapsters
             config.NewConfig<User, UserDto>()
                 .Map(dest=> dest.RoleId, src=> src.Role.Id);
 
-
+           
         }
     }
 }

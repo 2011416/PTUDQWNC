@@ -22,5 +22,7 @@ var app = builder.Build();
     app.MapCategoryEndpoints();
     app.MapRoleEndPoints();
     app.MapUserEndpoints();
+    app.MapProductEndpoints();
+    app.MapDeliveryEndpoints();
     app.Run();
 }

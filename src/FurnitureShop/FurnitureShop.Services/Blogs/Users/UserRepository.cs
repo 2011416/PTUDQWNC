@@ -34,6 +34,7 @@ namespace FurnitureShop.Services.Blogs.Users
        private IQueryable<User> FilterUser(UserQuery query) {
 
             IQueryable<User> userQuery = _context.Set<User>()
+                    .Include(p=> p.Role)
                    .Include(pr => pr.Products)
                    .Include(pr => pr.Deliveries);
             if (!string.IsNullOrWhiteSpace(query.Keyword))
@@ -78,6 +79,7 @@ namespace FurnitureShop.Services.Blogs.Users
                 return await _context.Set<User>().FindAsync(userId);
             }
             return await _context.Set<User>()
+                .Include(u=> u.Role)
                .Include(u => u.Products)
                .Include(u => u.Deliveries)
                 .FirstOrDefaultAsync(x => x.Id == userId, cancellationToken);
@@ -86,6 +88,7 @@ namespace FurnitureShop.Services.Blogs.Users
         public async Task<User> GetUserBySlugAsync(string slug, CancellationToken cancellationToken = default)
         {
             IQueryable<User> userQuery = _context.Set<User>()
+                .Include(u=> u.Role)
                 .Include(u => u.Products)
                .Include(u => u.Deliveries);
 

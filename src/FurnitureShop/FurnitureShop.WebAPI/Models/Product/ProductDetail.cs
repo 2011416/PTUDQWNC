@@ -1,6 +1,6 @@
 ﻿namespace FurnitureShop.WebAPI.Models.Product
 {
-    public class ProductDto
+    public class ProductDetail
     {
         public int Id { get; set; }
         public string Name { get; set; }
@@ -11,6 +11,5 @@
         public string Material { get; set; }
         public string Collection { get; set; }
         public string UrlImage { get; set; }
-        public int UserId { get; set; }
     }
 }

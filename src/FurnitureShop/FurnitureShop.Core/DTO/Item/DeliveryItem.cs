@@ -1,6 +1,12 @@
-﻿namespace FurnitureShop.WebAPI.Models.Delivery
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace FurnitureShop.Core.DTO.Item
 {
-    public class DeliveryDto
+    public class DeliveryItem
     {
         public int Id { get; set; }
         public int UserId { get; set; }

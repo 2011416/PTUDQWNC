@@ -34,19 +34,24 @@ namespace FurnitureShop.WebAPI.Endpoints
            .WithName("GetDetailUserById")
            .Produces<ApiResponse<UserDto>>();
 
-            // get by slug
+      
             routeGroupBuilder.MapGet("/byslug/{slug:regex(^[a-z0-9_-]+$)}", GetDetailUserBySlug)
                 .WithName("GetDetailUserBySlug")
                 .Produces<ApiResponse<UserDto>>();
 
-            // add or update post
+           
             routeGroupBuilder.MapPost("/", AddOrUpdateUsers)
                 .WithName("AddOrUpdateUser")
                 .Accepts<UserEditModel>("multipart/form-data")
                 .Produces(401)
                 .Produces<ApiResponse<UserDto>>();
+            routeGroupBuilder.MapPut("/", AddOrUpdateUsers)
+               .WithName("UpdateUser")
+               .Accepts<UserEditModel>("multipart/form-data")
+               .Produces(401)
+               .Produces<ApiResponse<UserDto>>();
 
-            // delete User
+
             routeGroupBuilder.MapDelete("/{id:int}", DeleteUser)
                 .WithName("DeleteAnUser")
                 .Produces(401)
@@ -78,13 +83,13 @@ namespace FurnitureShop.WebAPI.Endpoints
         private static async Task<IResult> GetDetailUserById(
        int id, IUserRepository userRepository, IMapper mapper)
         {
-            var project = await userRepository.GetCachedUserByIdAsync(id, true);
+            var user = await userRepository.GetCachedUserByIdAsync(id, true);
 
-            var projectQuery = mapper.Map<UserDto>(project);
+            var userQuery = mapper.Map<UserDto>(user);
 
-            return projectQuery == null
+            return userQuery == null
                 ? Results.Ok(ApiResponse.Fail(HttpStatusCode.NotFound, $"Không tìm thấy id"))
-                : Results.Ok(ApiResponse.Success(mapper.Map<UserDto>(project)));
+                : Results.Ok(ApiResponse.Success(mapper.Map<UserDto>(user)));
         }
         private static async Task<IResult> GetDetailUserBySlug(
        [FromRoute] string slug,
@@ -123,7 +128,7 @@ namespace FurnitureShop.WebAPI.Endpoints
             user.Email = model.Email;
             user.phoneNumber = model.phoneNumber;
             user.Adress= model.Adress;
-            user.RoleId= model.RoleId;
+            user.Role.Id= model.RoleId;
 
             await userRepository.CreateOrUpdateUserAsync(user);
             return Results.Ok(ApiResponse.Success(mapper.Map<UserDto>(user), HttpStatusCode.Created));

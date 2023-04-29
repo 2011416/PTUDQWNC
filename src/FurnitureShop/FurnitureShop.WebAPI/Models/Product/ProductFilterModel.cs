@@ -1,6 +1,10 @@
-﻿namespace FurnitureShop.WebAPI.Models.Product
+﻿using System.Globalization;
+
+namespace FurnitureShop.WebAPI.Models.Product
 {
-    public class ProductFilterModel
+    public class ProductFilterModel :PagingModel
     {
+        //public int UserId { get; set; }
+        public string Keyword { get; set; }
     }
 }

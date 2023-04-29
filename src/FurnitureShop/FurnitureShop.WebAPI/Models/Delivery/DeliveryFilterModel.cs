@@ -1,6 +1,7 @@
 ﻿namespace FurnitureShop.WebAPI.Models.Delivery
 {
-    public class DeliveryFilterModel
+    public class DeliveryFilterModel: PagingModel
     {
+      public  string Keyword { get; set; }
     }
 }
