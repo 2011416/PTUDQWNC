@@ -50,8 +50,8 @@ namespace FurnitureShop.Data.Migrations
                     Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Email = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Password = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Adress = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
-                    phoneNumber = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Adress = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true),
+                    phoneNumber = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
                     UrlSlug = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     RoleId = table.Column<int>(type: "int", nullable: false)
                 },
@@ -95,12 +95,12 @@ namespace FurnitureShop.Data.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", maxLength: 10000, nullable: false),
                     UrlSlug = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Price = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Size = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Material = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    Collection = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Material = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
+                    Collection = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true),
                     UrlImage = table.Column<string>(type: "nvarchar(1000)", maxLength: 1000, nullable: true),
                     UserId = table.Column<int>(type: "int", nullable: false)
                 },

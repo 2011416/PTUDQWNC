@@ -9,9 +9,11 @@ using FurnitureShop.Services.Timing;
 using FurnitureShop.Data.Seeders;
 
 using Microsoft.Extensions.Options;
-
-
-
+using FurnitureShop.Services.Blogs.Categories;
+using FurnitureShop.Services.Blogs.Roles;
+using FurnitureShop.Services.Blogs.Users;
+using FurnitureShop.Services.Blogs.Products;
+using FurnitureShop.Services.Blogs.Deliveries;
 
 namespace ManageProject.API.Extensions
 {
@@ -29,7 +31,12 @@ namespace ManageProject.API.Extensions
     
             builder.Services.AddScoped<ITimeProvider, LocalTimeProvider>();
             builder.Services.AddScoped<IMediaManager, LocalFileSystemMediaManager>();
-          
+            builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+            builder.Services.AddScoped<IRoleRepository, RoleRepository>();
+            builder.Services.AddScoped<IUserRepository, UserRepository>();
+            builder.Services.AddScoped<IProductRepository, ProductRepository>();
+            builder.Services.AddScoped<IDeliveryRepository, DeliveryRepository>();
+
 
 
             return builder;
