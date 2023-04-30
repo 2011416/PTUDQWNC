@@ -14,6 +14,6 @@ namespace FurnitureShop.Core.Contracts
 
         string SortColumn { get; set; }
 
-        string SortOrder { get; set; }
+        string SortOrder { get; set; }  
     }
 }

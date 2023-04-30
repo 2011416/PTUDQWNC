@@ -1,4 +1,5 @@
-﻿using FurnitureShop.Core.Contracts;
+﻿using System.Collections;
+using FurnitureShop.Core.Contracts;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,20 +7,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FurnitureShop.Core.Collections
+namespace FurnitureShop.Core.Collections;
+
+public class PagedList<T> : PagingMetadata, IPagedList<T>
 {
     public class PagedList<T> : IPagedList<T>
     {
-        private readonly List<T> _subset = new();
+	private readonly List<T> _subset = new();
 
-        public PagedList(IList<T> items, int pageNumber, int pageSize, int totalCount)
-        {
+	public PagedList(IList<T> items, int pageNumber, int pageSize, int totalCount)
+		: base(pageNumber, pageSize, totalCount)
+	{
             PageNumber = pageNumber;
             PageSize = pageSize;
             TotalItemCount = totalCount;
 
-            _subset.AddRange(items);
-        }
+		_subset.AddRange(items);
+	}
 
         public int PageIndex { get; set; }
 
@@ -62,22 +66,22 @@ namespace FurnitureShop.Core.Collections
 
         public bool IsLastPage => (PageIndex >= (PageCount - 1));
 
-        #region IPagedList<T> Members
+	#region IPagedList<T> Members
 
-        public IEnumerator<T> GetEnumerator()
-        {
-            return _subset.GetEnumerator();
-        }
+	public IEnumerator<T> GetEnumerator()
+	{
+		return _subset.GetEnumerator();
+	}
 
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
+	IEnumerator IEnumerable.GetEnumerator()
+	{
+		return GetEnumerator();
+	}
 
-        public T this[int index] => _subset[index];
+	public T this[int index] => _subset[index];
 
-        public virtual int Count => _subset.Count;
+	public virtual int Count => _subset.Count;
 
-        #endregion
-    }
+	#endregion
+}
 }

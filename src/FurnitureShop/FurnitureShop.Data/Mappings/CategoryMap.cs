@@ -18,15 +18,18 @@ namespace FurnitureShop.Data.Mappings
             builder.HasKey(c => c.Id);
 
             builder.Property(c => c.Name)
-                .HasMaxLength(50)
+                .HasMaxLength(100)
                 .IsRequired();
 
             builder.Property(c => c.Description)
                 .HasMaxLength(500);
 
             builder.Property(c => c.UrlSlug)
-              .HasMaxLength(50)
-              .IsRequired();
+              .HasMaxLength(100);
+   
+
+            
+
 
             builder.Property(c => c.ShowOnMenu)
                 .IsRequired()
