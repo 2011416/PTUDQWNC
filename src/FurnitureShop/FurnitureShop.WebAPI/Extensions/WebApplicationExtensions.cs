@@ -19,8 +19,9 @@ namespace ManageProject.API.Extensions
     {
         public static WebApplicationBuilder ConfigureServices(this WebApplicationBuilder builder)
         {
+            builder.Services.AddControllers();
             builder.Services.AddMemoryCache();
-            builder.Services.AddDbContext<BlogDbContext>(options =>
+            builder.Services.AddDbContext<StoreDbContext>(options =>
              options.UseSqlServer(
                builder.Configuration
                  .GetConnectionString("DefaultConnection")));

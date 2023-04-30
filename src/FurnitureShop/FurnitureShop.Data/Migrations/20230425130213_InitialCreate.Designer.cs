@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace FurnitureShop.Data.Migrations
 {
-    [DbContext(typeof(BlogDbContext))]
+    [DbContext(typeof(StoreDbContext))]
     [Migration("20230425130213_InitialCreate")]
     partial class InitialCreate
     {

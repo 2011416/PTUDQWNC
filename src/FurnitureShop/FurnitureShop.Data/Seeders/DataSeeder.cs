@@ -2,6 +2,7 @@
 using FurnitureShop.Data.Contexts;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,9 +11,9 @@ namespace FurnitureShop.Data.Seeders
 {
     public class DataSeeder : IDataSeeder
     {
-        private readonly BlogDbContext _dbContext;
+        private readonly StoreDbContext _dbContext;
 
-        public DataSeeder(BlogDbContext dbContext)
+        public DataSeeder(StoreDbContext dbContext)
         {
             _dbContext = dbContext;
         }
@@ -20,7 +21,6 @@ namespace FurnitureShop.Data.Seeders
         public void Initialize()
         {
             _dbContext.Database.EnsureCreated();
-
             if (_dbContext.Products.Any()) return;
             var categories = AddCategories();
             var roles = AddRoles();
@@ -39,7 +39,7 @@ namespace FurnitureShop.Data.Seeders
                     Name= "Phòng khách",
                     UrlSlug="phong-khach",
                     Description="Để trang trí phòng khách",
-                    
+
                 },
                  new()
                 {
@@ -84,21 +84,126 @@ namespace FurnitureShop.Data.Seeders
 
                 },
 
-            return producers;
-        }
 
 
 
 
             };
-            _dbContext.Categories.AddRange(categories);
+            foreach (var category in categories)
+            {
+                if (!_dbContext.Categories.Any(a => a.UrlSlug == category.UrlSlug))
+                {
+                    _dbContext.Categories.Add(category);
+                }
+            }
             _dbContext.SaveChanges();
             return categories;
 
-            return categories;
         }
+        private IList<Role> AddRoles()
+        {
+            var roles = new List<Role>() {
+                new()
+                {
+                    Name= "User",
+                    UrlSlug= "user",
+                    Description= "Tài khoản dành cho user",
 
-        private IList<Delivery> AddDeliveries(IList<User> users) {
+                },
+                 new()
+                {
+                    Name= "Admin",
+                    UrlSlug= "admin",
+                    Description= "Tài khoản dành cho admin",
+
+                }
+            };
+            foreach (var role in roles)
+            {
+                if (!_dbContext.Roles.Any(a => a.UrlSlug == role.UrlSlug))
+                {
+                    _dbContext.Roles.Add(role);
+                }
+            }
+            _dbContext.SaveChanges();
+            return roles;
+
+        }
+        private IList<User> AddUsers(IList<Role> roles)
+        {
+
+            var users = new List<User>()
+            {
+                new()
+                {
+                    Name= "Amin",
+                    UrlSlug= "amin",
+                    Password= "123",
+                    Adress= "Da Lat",
+                    Role= roles[1],
+                    Email= "admin@gmail.com",
+
+
+                },
+                 new()
+                {
+                    Name= "UserTest",
+                    UrlSlug= "user-test",
+                    Password= "123",
+                    Adress= "Da Lat",
+                    Role= roles[0],
+                    Email= "usertest@gmail.com",
+                    phoneNumber= "091111111"
+
+                },
+                  new()
+                {
+                    Name= "Hung",
+                    UrlSlug= "hung",
+                    Password= "123",
+                    Adress= "Da Lat",
+                    Role= roles[0],
+                    Email= "hung@gmail.com",
+                      phoneNumber= "091222222"
+                },
+                   new()
+                {
+                    Name= "Hoanh Anh",
+                    UrlSlug= "hoanh-anh",
+                    Password= "123",
+                    Adress= "Da Lat",
+                    Role= roles[1],
+                    Email= "anh@gmail.com",
+                      phoneNumber= "091333333"
+                },
+                    new()
+                {
+                    Name= "Nhan",
+                    UrlSlug= "nhan",
+                    Password= "123",
+                    Adress= "Da Lat",
+                    Role= roles[1],
+                    Email= "nhan@gmail.com",
+                      phoneNumber= "091444444"
+
+                }
+
+
+            };
+            foreach (var user in users)
+            {
+                if (!_dbContext.Users.Any(a => a.UrlSlug == user.UrlSlug))
+                {
+                    _dbContext.Users.Add(user);
+                }
+            }
+            _dbContext.SaveChanges();
+            return users;
+
+
+        }
+        private IList<Delivery> AddDeliveries(IList<User> users)
+        {
             var deliveries = new List<Delivery>()
             {
                 new(){
@@ -114,13 +219,19 @@ namespace FurnitureShop.Data.Seeders
                   User= users[1]
                 },
             };
-            _dbContext.Deliveries.AddRange(deliveries);
+            foreach (var deliver in deliveries)
+            {
+                if (!_dbContext.Deliveries.Any(a => a.UrlSlug == deliver.UrlSlug))
+                {
+                    _dbContext.Deliveries.Add(deliver);
+                }
+            }
             _dbContext.SaveChanges();
             return deliveries;
-            
-            return tags;
+
         }
-        private IList<Product> AddProducts(IList<User> users, IList<Category> categories) {
+        private IList<Product> AddProducts(IList<User> users, IList<Category> categories)
+        {
 
             var products = new List<Product>() {
                 new()
@@ -135,7 +246,9 @@ namespace FurnitureShop.Data.Seeders
                         categories[4]
                     },
                     Material="Gỗ tần bì (ash) , MDF veneer tần bì",
-                    Price="17,500,000 đ"
+                    Price="17,500,000 đ",
+                   User= users[1]
+
 
                 },
                  new()
@@ -150,7 +263,10 @@ namespace FurnitureShop.Data.Seeders
                         categories[1]
                     },
                     Material="Chân kim loại 2 màu đen/gold - nệm bọc da tự nhiên",
-                    Price="96,900,000 đ"
+                    Price="96,900,000 đ",
+                                       User= users[2]
+
+
 
                 },
                   new()
@@ -166,7 +282,10 @@ namespace FurnitureShop.Data.Seeders
                     },
                     Material="Gỗ - MDF veneer Ash, chân kim loại",
                     Price="96,900,000 đ",
-                    Collection="Cabo"
+                    Collection="Cabo",
+                                      User= users[3]
+
+
 
                 },
 
@@ -175,96 +294,18 @@ namespace FurnitureShop.Data.Seeders
 
 
             };
-            _dbContext.Products.AddRange(products);
-            _dbContext.SaveChanges();
-            return products;    
-        }
-        private IList<Role> AddRoles() {
-            var roles = new List<Role>() {
-                new()
-                {
-                    Name= "User",
-                    UrlSlug= "user",
-                    Description= "Tài khoản dành cho user",
-                    
-                },
-                 new()
-                {
-                    Name= "Admin",
-                    UrlSlug= "amin",
-                    Description= "Tài khoản dành cho admin",
-
-                }
-            };
-            _dbContext.Roles.AddRange(roles);
-            _dbContext.SaveChanges();
-            return roles;
-        
-        }
-        private IList<User> AddUsers(IList<Role> roles) {
-
-            var users = new List<User>()
+            foreach (var product in products)
             {
-                new()
+                if (!_dbContext.Products.Any(a => a.UrlSlug == product.UrlSlug))
                 {
-                    Name= "Amin",
-                    UrlSlug= "amin",
-                    Password= "123",
-                    Adress= "Da Lat",
-                    Role= roles[1],
-                    Email= "admin@gmail.com",
-
-                },
-                 new()
-                {
-                    Name= "UserTest",
-                    UrlSlug= "user-test",
-                    Password= "123",
-                    Adress= "Da Lat",
-                    Role= roles[0],
-                    Email= "usertest@gmail.com",
-
-                },
-                  new()
-                {
-                    Name= "Hung",
-                    UrlSlug= "hung",
-                    Password= "123",
-                    Adress= "Da Lat",
-                    Role= roles[0],
-                    Email= "hung@gmail.com",
-
-                },
-                   new()
-                {
-                    Name= "Hoanh Anh",
-                    UrlSlug= "hoanh-anh",
-                    Password= "123",
-                    Adress= "Da Lat",
-                    Role= roles[1],
-                    Email= "anh@gmail.com",
-
-                },
-                    new()
-                {
-                    Name= "Nhan",
-                    UrlSlug= "nhan",
-                    Password= "123",
-                    Adress= "Da Lat",
-                    Role= roles[1],
-                    Email= "nhan@gmail.com",
-
+                    _dbContext.Products.Add(product);
                 }
-
-
-            };
-            _dbContext.Users.AddRange(users);
+            }
             _dbContext.SaveChanges();
-            return users;
-            
-        
             return products;
         }
+
+
 
     }
 }

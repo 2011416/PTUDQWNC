@@ -17,16 +17,16 @@ namespace FurnitureShop.Data.Contexts
         public DbSet<Category> Categories { get; set; }
         public DbSet<Delivery> Deliveries { get; set; }
 
-        public BlogDbContext(DbContextOptions<BlogDbContext> options) : base(options) { }
-        public BlogDbContext()
+        public StoreDbContext(DbContextOptions<StoreDbContext> options) : base(options) { }
+        public StoreDbContext()
         {
 
         }
 
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //{
-        //    optionsBuilder.UseSqlServer(@"Server=XUANHUNG;Database=FurnitureShop;Trusted_Connection=true;MultipleActiveResultSets=true;TrustServerCertificate=True");
-        //}
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer(@"Server=DESKTOP-C0NGQA5;Database=FurnitureShop;Trusted_Connection=true;MultipleActiveResultSets=true;TrustServerCertificate=True");
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
