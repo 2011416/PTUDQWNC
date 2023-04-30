@@ -18,10 +18,10 @@ namespace FurnitureShop.Services.Blogs.Products
 {
     public class ProductRepository : IProductRepository
     {
-        private readonly BlogDbContext _context;
+        private readonly StoreDbContext _context;
         private readonly IMemoryCache _memoryCache;
 
-        public ProductRepository(BlogDbContext context, IMemoryCache memoryCache)
+        public ProductRepository(StoreDbContext context, IMemoryCache memoryCache)
         {
             _context = context;
             _memoryCache = memoryCache;

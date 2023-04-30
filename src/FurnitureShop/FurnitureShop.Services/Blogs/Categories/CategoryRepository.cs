@@ -16,10 +16,10 @@ namespace FurnitureShop.Services.Blogs.Categories
 {
     public class CategoryRepository : ICategoryRepository
     {
-        private readonly BlogDbContext _context;
+        private readonly StoreDbContext _context;
         private readonly IMemoryCache _memoryCache;
 
-        public CategoryRepository(BlogDbContext context, IMemoryCache memoryCache)
+        public CategoryRepository(StoreDbContext context, IMemoryCache memoryCache)
         {
             _context = context;
             _memoryCache = memoryCache;

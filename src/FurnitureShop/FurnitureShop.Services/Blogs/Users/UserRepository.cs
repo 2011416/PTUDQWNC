@@ -15,10 +15,10 @@ namespace FurnitureShop.Services.Blogs.Users
 {
     public class UserRepository:IUserRepository
     {
-        private readonly BlogDbContext _context;
+        private readonly StoreDbContext _context;
         private readonly IMemoryCache _memoryCache;
 
-        public UserRepository(BlogDbContext context, IMemoryCache memoryCache)
+        public UserRepository(StoreDbContext context, IMemoryCache memoryCache)
         {
             _context = context;
             _memoryCache = memoryCache;

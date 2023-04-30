@@ -13,10 +13,10 @@ namespace FurnitureShop.Services.Blogs.Roles
 {
     public class RoleRepository:IRoleRepository
     {
-        private readonly BlogDbContext _context;
+        private readonly StoreDbContext _context;
         private readonly IMemoryCache _memoryCache;
 
-        public RoleRepository(BlogDbContext context, IMemoryCache memoryCache)
+        public RoleRepository(StoreDbContext context, IMemoryCache memoryCache)
         {
             _context = context;
             _memoryCache = memoryCache;

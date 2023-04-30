@@ -15,10 +15,10 @@ namespace FurnitureShop.Services.Blogs.Deliveries
 {
     public class DeliveryRepository:IDeliveryRepository
     {
-        private readonly BlogDbContext _context;
+        private readonly StoreDbContext _context;
         private readonly IMemoryCache _memoryCache;
 
-        public DeliveryRepository(BlogDbContext context, IMemoryCache memoryCache)
+        public DeliveryRepository(StoreDbContext context, IMemoryCache memoryCache)
         {
             _context = context;
             _memoryCache = memoryCache;
