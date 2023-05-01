@@ -11,7 +11,7 @@ const Categories = () => {
     useEffect(() => {
         document.title = 'Danh sách chủ đề';
 
-        getCategories().then((data) => {             console.log(data);
+        getCategories().then((data) => {     
             if (data) 
                 setCategoriesList(data.items);
             else 
