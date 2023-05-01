@@ -15,8 +15,8 @@ import About from './pages/About'
 
 import Products from './pages/admin/Product/Product';
 import Categories from './pages/admin/Categories';
-import Tags from './pages/admin/Tags';
-import Producers from './pages/admin/Producers';
+import Roles from './pages/admin/Roles';
+import Users from './pages/admin/Users';
 import Edit from './pages/admin/Product/Edit';
 
 import NotFound from './pages/NotFound';
@@ -38,12 +38,12 @@ function App() {
         
         <Route path='/admin' element={<AdminLayout />} >
           <Route path='/admin' element={<adminIndex.default />} />
-          <Route path='/admin/producers' element={<Producers />} />
+          <Route path='/admin/users' element={<Users />} />
           <Route path='/admin/categories' element={<Categories />} />
           <Route path='/admin/products' element={<Products />} />
           <Route path='/admin/products/edit' element={<Edit />} />
           <Route path='/admin/products/edit/:id' element={<Edit />} />
-          <Route path='/admin/tags' element={<Tags />} />
+          <Route path='/admin/roles' element={<Roles />} />
         </Route>
 
         <Route path='/400' element={<BadRequest />} />

@@ -22,14 +22,14 @@ const Navbar = () => {
 						</Nav.Item>
 						<Nav.Item>
 							<Link
-								to='/admin/producers' className='nav-link text-dark'>
-								Nhà sản xuất
+								to='/admin/users' className='nav-link text-dark'>
+								Tài khoản
 							</Link>
 						</Nav.Item>
 						<Nav.Item>
-							<Link to='/admin/tags'
+							<Link to='/admin/roles'
 								className='nav-link text-dark'>
-								Thẻ
+								Role
 							</Link>
 						</Nav.Item>
 						<Nav.Item>

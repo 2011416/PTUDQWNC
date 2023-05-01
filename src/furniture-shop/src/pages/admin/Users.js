@@ -1,54 +1,57 @@
 import React, {useEffect, useState } from "react";
 import Table from 'react-bootstrap/Table';
-import { Link } from 'react-router-dom';
-import { getCategories } from "../../Services/Repository";
+import { Link, useParams, Navigate } from 'react-router-dom';
+import { getUsers } from "../../Services/Repository";
 import Loading from "../../components/Loading";
 
-const Categories = () => {
-    const [categoriesList, setCategoriesList] = useState([]);
+const Users = () => {
+    const [usersList, setUsersList] = useState([]);
     const [isVisibleLoading, setIsVisibleLoading] = useState(true);
 
     useEffect(() => {
-        document.title = 'Danh sách chủ đề';
+        document.title = 'Danh sách tài khoản';
 
-        getCategories().then((data) => {             console.log(data);
+        getUsers().then((data) => {
             if (data) 
-                setCategoriesList(data.items);
+                setUsersList(data.items);
             else 
-                setCategoriesList([]);
+                setUsersList([]);
             setIsVisibleLoading(false);
         });
     }, []);
 
     return (
         <>
-            <h1>Danh sách chủ đề </h1>
+            <h1>Danh sách tài khoản </h1>
             {isVisibleLoading ? <Loading /> :
                 <Table striped responsive bordered>
                     <thead>
                         <tr>
-                            <th>Tiêu đề</th>
-                            <th>Slug</th>
-                            <th>Mô tả</th>
+                            <th>Tên</th>
+                            <th>Email</th>
+                            <th>Số điện thoại</th>
+                            <th>Địa chỉ</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {categoriesList.length > 0 ? categoriesList.map((item, index) => 
+                        {usersList.length > 0 ? usersList.map((item, index) => 
                                 <tr key={index}>
                                     <td>
-                                        <Link to={`/admin/categories/edit/${item.id}`} 
+                                        <Link to={`/admin/users/edit/${item.id}`} 
                                         className='text-bold'>
                                             {item.name}
                                         </Link>
-                                        <p className="text-muted">{item.description}</p>
+                                        <p className="text-muted">{item.name}</p>
                                     </td>
+                                    <td>{item.email}</td>
+                                    <td>{item.address}</td>
+                                    <td>{item.phoneNumber}</td>
                                     <td>{item.urlSlug}</td>
-                                    <td>{item.description}</td>
                                 </tr>
                             ) : 
                             <tr>
                                 <td colSpan={4}>
-                                    <h4 className="text-danger text-center">Không tìm thấy chủ đề nào</h4>
+                                    <h4 className="text-danger text-center">Không tìm thấy tài khoản nào</h4>
                                 </td>
                             </tr>}
                     </tbody>
@@ -58,4 +61,4 @@ const Categories = () => {
     );
 }
 
-export default Categories;
+export default Users;
