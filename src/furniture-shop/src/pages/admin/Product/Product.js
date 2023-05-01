@@ -3,6 +3,7 @@ import Table from "react-bootstrap/Table";
 import { Link } from "react-router-dom";
 import { getProducts } from "../../../Services/Repository";
 import Loading from "../../../components/Loading";
+import ProductFilterPane from "../../../components/admin/ProductFilterPane";
 
 const Products = () => {
   const [productsList, setProductsList] = useState([]);
@@ -22,6 +23,7 @@ const Products = () => {
   return (
     <>
       <h1>Danh sách sản phẩm</h1>
+      <ProductFilterPane/>
       {isVisibleLoading ? (
         <Loading />
       ) : (

@@ -3,6 +3,7 @@ import Table from 'react-bootstrap/Table';
 import { Link } from 'react-router-dom';
 import { getCategories } from "../../Services/Repository";
 import Loading from "../../components/Loading";
+import CategoryFilterPane from "../../components/admin/CategoryFilterPane";
 
 const Categories = () => {
     const [categoriesList, setCategoriesList] = useState([]);
@@ -23,6 +24,7 @@ const Categories = () => {
     return (
         <>
             <h1>Danh sách chủ đề </h1>
+            <CategoryFilterPane />
             {isVisibleLoading ? <Loading /> :
                 <Table striped responsive bordered>
                     <thead>

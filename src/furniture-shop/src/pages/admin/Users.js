@@ -3,6 +3,7 @@ import Table from 'react-bootstrap/Table';
 import { Link, useParams, Navigate } from 'react-router-dom';
 import { getUsers } from "../../Services/Repository";
 import Loading from "../../components/Loading";
+import UserFilterPane from "../../components/admin/UserFilterPane";
 
 const Users = () => {
     const [usersList, setUsersList] = useState([]);
@@ -23,6 +24,7 @@ const Users = () => {
     return (
         <>
             <h1>Danh sách tài khoản </h1>
+            <UserFilterPane/>
             {isVisibleLoading ? <Loading /> :
                 <Table striped responsive bordered>
                     <thead>
