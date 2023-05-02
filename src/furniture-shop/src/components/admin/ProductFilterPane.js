@@ -47,7 +47,7 @@ const ProductFilterPane = () => {
                 value={keyword}
                 onChange={e => setKeyword(e.target.value)} />                
         </Form.Group>
-        <Form.Group className='col-auto'>
+        {/* <Form.Group className='col-auto'>
             <Form.Label className='visually-hidden'>
                 Year
             </Form.Label>
@@ -59,8 +59,8 @@ const ProductFilterPane = () => {
              max={year}
              onChange={e => setYear(e.target.value)}
              />
-        </Form.Group>
-        <Form.Group className='col-auto'>
+        </Form.Group> */}
+        {/* <Form.Group className='col-auto'>
             <Form.Label className='visually-hidden'>
                 Month
             </Form.Label>
@@ -76,7 +76,7 @@ const ProductFilterPane = () => {
                  <option key={index} value={item.value}>{item.text}</option>
                  )}
             </Form.Select>
-        </Form.Group>
+        </Form.Group> */}
         <Form.Group className='col-auto'>
             <Button variant="primary" type='submit'>
                 Tìm/Lọc
