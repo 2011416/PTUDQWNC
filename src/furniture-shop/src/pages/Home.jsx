@@ -14,44 +14,33 @@ import policy from '../assets/fake-data/policy'
 import productData from '../assets/fake-data/product'
 
 import banner from "../assets/images/banner.png"
-import { getProducts } from '../Services/Repository'
+import { getProducts, getProductFilter } from '../Services/Repository'
 
 const Home = () => {
+  const [productsList, setProductsList] = useState([]);
+  const [isVisibleLoading, setIsVisibleLoading] = useState(true);
+  let k = "", p = 1, ps = 3;
 
-    const [productList, setProductList] =useState([]);
-    const [metadata, setMetadata] =useState([]);
-    
-    function useQuery() {
-        const { search } = useLocation();
-        return React.useMemo(() => new URLSearchParams(search), [search]);
-    }
 
-    let query = useQuery(),
-        k = query.get('k') ?? '',
-        p = query.get('p') ?? 1,
-        ps = query.get('ps') ?? 5;
+  useEffect(() => {
+    document.title = "Danh sách sản phẩm";
+    getProducts(k,ps, p).then((data)  => { 
+      if (data) 
+        setProductsList(data.items);
+      else setProductsList([]);
+        setIsVisibleLoading(false);
+    });
 
-    useEffect(() => {
-        document.title = 'Trang chủ';
-
-        getProducts(k, ps, p).then(data => {
-            if (data) {
-            setProductList(data.items);
-            setMetadata(data.metadata);
-            } 
-            else
-            setProductList([]);        
-        })
-    }, [k, p, ps]);
+  }, [k, ps,p]);
 
     useEffect(() => {
         window.scrollTo(0, 0);
-    }, [productList]);
+    }, [productsList]);
 
-    if (productList.length > 0)
+    if (productsList.length > 0)
     return (
         <div className='p-4'>
-            {productList.map((item, index) => {
+            {productsList.map((item, index) => {
                 return (
                     <Helmet title="Trang chủ">
           {/* hero slider */}
@@ -99,14 +88,14 @@ const Home = () => {
                         gap={20}
                     >
                         {
-                            getProducts(4).map((item, index) => (
+                            productsList.map((item, index) => (
                                 <ProductCard
                                     key={index}
-                                    img01={item.image01}
-                                    img02={item.image02}
-                                    name={item.title}
+                                    img01={item.urlImage}
+                                    img02={item.urlImage}
+                                    name={item.name}
                                     price={Number(item.price)}
-                                    slug={item.slug}
+                                    slug={item.urlSlug}
                                 />
                             ))
                         }
@@ -128,14 +117,14 @@ const Home = () => {
                         gap={20}
                     >
                         {
-                            getProducts(8).map((item, index) => (
+                            productsList.map((item, index) => (
                                 <ProductCard
                                     key={index}
-                                    img01={item.image01}
-                                    img02={item.image02}
-                                    name={item.title}
+                                    img01={item.urlImage}
+                                    img02={item.urlImage}
+                                    name={item.name}
                                     price={Number(item.price)}
-                                    slug={item.slug}
+                                    slug={item.urlSlug}
                                 />
                             ))
                         }
@@ -167,14 +156,14 @@ const Home = () => {
                         gap={20}
                     >
                         {
-                            productData.getProducts(12).map((item, index) => (
+                             productsList.map((item, index) => (
                                 <ProductCard
                                     key={index}
-                                    img01={item.image01}
-                                    img02={item.image02}
-                                    name={item.title}
+                                    img01={item.urlImage}
+                                    img02={item.urlImage}
+                                    name={item.name}
                                     price={Number(item.price)}
-                                    slug={item.slug}
+                                    slug={item.urlSlug}
                                 />
                             ))
                         }

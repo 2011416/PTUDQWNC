@@ -13,7 +13,7 @@ const Products = () => {
 
   useEffect(() => {
     document.title = "Danh sách sản phẩm";
-    getProductFilter(k,ps, p).then((data)  => { 
+    getProducts(k,ps, p).then((data)  => { 
       if (data) 
         setProductsList(data.items);
       else setProductsList([]);
@@ -21,7 +21,6 @@ const Products = () => {
     });
 
   }, [k, ps,p]);
-  console.log(productsList.items);
 
   return (
     <>

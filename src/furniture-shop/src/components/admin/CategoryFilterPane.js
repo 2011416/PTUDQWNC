@@ -77,23 +77,6 @@ const CategoryFilterPane = () => {
              />
         </Form.Group>
         <Form.Group className='col-auto'>
-            <Form.Label className='visually-hidden'>
-                Month
-            </Form.Label>
-            <Form.Select
-             name='month'
-             value={month}
-             onChange={e => setMonth(e.target.value)}
-             title='Month'
-            >
-                <option value=''>-- Chọn tháng --</option>
-                {postFilter.monthList.length > 0 &&
-                 postFilter.monthList.map((item, index) =>
-                 <option key={index} value={item.value}>{item.text}</option>
-                 )}
-            </Form.Select>
-        </Form.Group>
-        <Form.Group className='col-auto'>
             <Button variant="primary" type='submit'>
                 Tìm/Lọc
             </Button>
