@@ -20,7 +20,7 @@ const Catalog = () => {
 
     useEffect(() => {
         document.title = "Danh sách sản phẩm";
-        getProducts(k,ps, p).then((data)  => { 
+        getProductFilter(k,ps, p).then((data)  => { 
           if (data) 
             setProductsList(data.items);
           else setProductsList([]);

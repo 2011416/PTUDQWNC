@@ -25,5 +25,11 @@ export async function getUsers(PageNumber= 1, PageSize=5, Keywork="") {
   return get_api(`https://localhost:7226/api/user?PageSize=10&PageNumber=1`)
 }
 
+export async function getProductBySlug(slug = '') {
+  if (slug !== '')
+   return get_api(`https://localhost:7226/api/categories/${slug}`);
+  return null;
+}
+
 
 
