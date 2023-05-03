@@ -37,7 +37,13 @@ const Navbar = () => {
 								className='nav-link text-dark'>
 								Sản phẩm
 							</Link>
-						</Nav.Item>						
+						</Nav.Item>
+						<Nav.Item>
+							<Link to='/admin/deliveries'
+								className='nav-link text-dark'>
+								Đơn
+							</Link>
+						</Nav.Item>								
 					</Nav>
 				</Nb.Collapse>
 			</div>

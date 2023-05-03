@@ -1,7 +1,7 @@
 import axios from "axios";
 import { get_api } from "./Method";
 
-export async function getProducts(PageNumber= 1, PageSize=5, Keywork="") {
+export async function getProducts(PageNumber= 1, PageSize=5, Keyword="") {
   return get_api(`https://localhost:7226/api/product?PageSize=5&PageNumber=1`)
 }
 
@@ -17,12 +17,16 @@ url.searchParams.append('PageNumber', pageNumber);
 return get_api(url.href);
 }
 
-export async function getCategories(PageNumber= 1, PageSize=5, Keywork="") {
+export async function getCategories(PageNumber= 1, PageSize=5, Keyword="") {
   return get_api(`https://localhost:7226/api/categories?PageSize=5&PageNumber=1`)
 }
 
-export async function getUsers(PageNumber= 1, PageSize=5, Keywork="") {
+export async function getUsers(PageNumber= 1, PageSize=5, Keyword="") {
   return get_api(`https://localhost:7226/api/user?PageSize=10&PageNumber=1`)
+}
+
+export async function getDeliveries(PageNumber= 1, PageSize=5, Keyword="") {
+  return get_api(`https://localhost:7226/api/deliveries?PageSize=10&PageNumber=1`)
 }
 
 export async function getProductBySlug(slug = '') {
@@ -36,6 +40,8 @@ export async function deleteCategory(id = '') {
    return get_api(`https://localhost:7226/api/categories/${id}`);
   return null;
 }
+
+
 
 
 

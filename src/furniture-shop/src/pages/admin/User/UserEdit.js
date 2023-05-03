@@ -18,20 +18,20 @@ const UserEdit = () => {
         roleId: ''
     };
 
-    const [category, setCategory] = useState(initialState);
+    const [user, setUser] = useState(initialState);
 
     const { id } = useParams();
 
    
     useEffect(() => {
-        document.title = 'Thêm/cập nhật chủ đề';
+        document.title = 'Thêm/cập nhật người dùng';
     }, []);
 
     return (
         <>
-            <h1 className="px-4 py-3 text-danger">Thêm/cập nhật chủ đề</h1>
+            <h1 className="px-4 py-3 text-danger">Thêm/cập nhật người dùng</h1>
             <Form className="mb-5 px-4">
-                <Form.Control type="hidden" name="id" value={category.id} />
+                <Form.Control type="hidden" name="id" value={user.id} />
                 <div className="row mb-3">
                     <Form.Label className="col-sm-2 col-form-label">Tên</Form.Label>
                     <div className="col-sm-10">

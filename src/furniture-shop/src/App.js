@@ -22,6 +22,9 @@ import Edit from './pages/admin/Product/Edit';
 import CategoryEdit from './pages/admin/Category/CategoryEdit';
 import UserEdit from './pages/admin/User/UserEdit';
 
+import Deliveries from './pages/admin/Delivery/Deliveries';
+import DeliveryEdit from './pages/admin/Delivery/DeliveriesEdit';
+
 import NotFound from './pages/NotFound';
 import BadRequest from './pages/BadRequest'
 
@@ -51,6 +54,9 @@ function App() {
           <Route path='/admin/products/edit' element={<Edit />} />
           <Route path='/admin/products/edit/:id' element={<Edit />} />
           <Route path='/admin/roles' element={<Roles />} />
+          <Route path='/admin/deliveries' element={<Deliveries />} />
+          <Route path='/admin/deliveries/edit' element={<DeliveryEdit />} />
+          <Route path='/admin/deliveries/edit/:id' element={<DeliveryEdit />} />
         </Route>
 
         <Route path='/400' element={<BadRequest />} />
