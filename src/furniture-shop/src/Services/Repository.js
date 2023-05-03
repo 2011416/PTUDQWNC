@@ -31,5 +31,11 @@ export async function getProductBySlug(slug = '') {
   return null;
 }
 
+export async function deleteCategory(id = '') {
+  if (id !== '')
+   return get_api(`https://localhost:7226/api/categories/${id}`);
+  return null;
+}
+
 
 

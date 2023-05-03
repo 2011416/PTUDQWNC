@@ -57,6 +57,15 @@ const Products = () => {
                   </td>
                 <td> <p className="text-muted">{item.description}</p></td>
                   <td>{item.price}</td>
+                  <td>
+                    <button
+                      type="button"
+                      className="btn btn-danger"
+                      size='small'
+                    >
+                      Xóa
+                    </button>
+                  </td>
                 </tr>
               ))
             ) 

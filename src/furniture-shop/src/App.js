@@ -14,10 +14,12 @@ import Contact from './pages/Contact'
 import About from './pages/About'
 
 import Products from './pages/admin/Product/Product';
-import Categories from './pages/admin/Categories';
+import Categories from './pages/admin/Category/Categories';
 import Roles from './pages/admin/Roles';
 import Users from './pages/admin/Users';
+
 import Edit from './pages/admin/Product/Edit';
+import CategoryEdit from './pages/admin/Category/CategoryEdit';
 
 import NotFound from './pages/NotFound';
 import BadRequest from './pages/BadRequest'
@@ -40,6 +42,8 @@ function App() {
           <Route path='/admin' element={<adminIndex.default />} />
           <Route path='/admin/users' element={<Users />} />
           <Route path='/admin/categories' element={<Categories />} />
+          <Route path='/admin/categories/edit' element={<CategoryEdit />} />
+          <Route path='/admin/categories/edit/:id' element={<CategoryEdit/>} />
           <Route path='/admin/products' element={<Products />} />
           <Route path='/admin/products/edit' element={<Edit />} />
           <Route path='/admin/products/edit/:id' element={<Edit />} />

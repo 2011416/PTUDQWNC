@@ -13,7 +13,6 @@ import { getProducts, getProductFilter } from '../Services/Repository'
 function ViewProduct(){
 
     const [productsList, setProductsList] = useState([]);
-    let k = "", p = 1, ps = 3;
 
     const {slug} =useParams();
 
