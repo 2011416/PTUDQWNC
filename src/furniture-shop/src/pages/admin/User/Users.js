@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Table from "react-bootstrap/Table";
 import { Link, useParams, Navigate } from "react-router-dom";
-import { getUsers } from "../../Services/Repository";
-import Loading from "../../components/Loading";
-import UserFilterPane from "../../components/admin/UserFilterPane";
+import { getUsers } from "../../../Services/Repository";
+import Loading from "../../../components/Loading";
+import UserFilterPane from "../../../components/admin/UserFilterPane";
 
 const Users = () => {
   const [usersList, setUsersList] = useState([]);

@@ -4,15 +4,18 @@ import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
 
 import { decode, isInteger } from '../../../utils/Utiles';
 
-import { getCategories } from '../../../Services/Repository';
+import { getUsers } from '../../../Services/Repository';
 
-const CategoryEdit = () => {
+const UserEdit = () => {
 
     const initialState = {
         id: 0,
         name: '',
         urlSlug: '',
-        description: '',
+        email: '',
+        address: '',
+        phoneNumber:'',
+        roleId: ''
     };
 
     const [category, setCategory] = useState(initialState);
@@ -40,6 +43,30 @@ const CategoryEdit = () => {
                         <Form.Control.Feedback type="invalid">Không được bỏ trống</Form.Control.Feedback>
                     </div>
                 </div>
+                 <div className="row mb-3">
+                    <Form.Label className="col-sm-2 col-form-label">email</Form.Label>
+                    <div className="col-sm-10">
+                        <Form.Control
+                            type="text"
+                            name="email"
+                            title="email"
+                            required
+                        />
+                        <Form.Control.Feedback type="invalid">Không được bỏ trống</Form.Control.Feedback>
+                    </div>
+                </div>
+                <div className="row mb-3">
+                    <Form.Label className="col-sm-2 col-form-label">Địa chỉ</Form.Label>
+                    <div className="col-sm-10">
+                        <Form.Control
+                            type="text"
+                            name="address"
+                            title="address"
+                            required
+                        />
+                        <Form.Control.Feedback type="invalid">Không được bỏ trống</Form.Control.Feedback>
+                    </div>
+                </div>
                 <div className="row mb-3">
                     <Form.Label className="col-sm-2 col-form-label">Slug</Form.Label>
                     <div className="col-sm-10">
@@ -53,16 +80,27 @@ const CategoryEdit = () => {
                     </div>
                 </div>
                 <div className="row mb-3">
-                    <Form.Label className="col-sm-2 col-form-label">Mô tả</Form.Label>
+                    <Form.Label className="col-sm-2 col-form-label">Số điện thoại</Form.Label>
                     <div className="col-sm-10">
                         <Form.Control
                             as="textarea"
                             type="text"
-                            name="description"
-                            title="description"
+                            name="phoneNumber"
+                            title="phoneNumber"
                         />
                     </div>
-                </div>               
+                </div>  
+                <div className="row mb-3">
+                    <Form.Label className="col-sm-2 col-form-label">Vai trò</Form.Label>
+                    <div className="col-sm-10">
+                        <Form.Control
+                            as="textarea"
+                            type="text"
+                            name="roleId"
+                            title="roleId"
+                        />
+                    </div>
+                </div>                         
                 <div className="text-center">
                     <Button variant="primary" type="submit">
                         Lưu các thay đổi
@@ -75,4 +113,4 @@ const CategoryEdit = () => {
         </>
     );
 }
-export default CategoryEdit;
+export default UserEdit;
