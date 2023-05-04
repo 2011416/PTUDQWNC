@@ -11,3 +11,22 @@ export function decode(str) {
     let txt = new DOMParser().parseFromString(str, 'text/html');
     return txt.documentElement.textContent;
 }
+
+export function getMonthName(monthNumber) {
+    const month = [
+        'January',
+        'February',
+        'March',
+        'April',
+        'May',
+        'June',
+        'July',
+        'August',
+        'September',
+        'October',
+        'November',
+        'December',
+    ];
+
+    return month[monthNumber - 1];
+}

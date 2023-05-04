@@ -1,9 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 import { reset } from "../../redux/Reducer";
+
+const months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
 const UserFilterPane = () => {
     // const postFilter = useSelector(state => state.postFilter),
@@ -11,6 +13,9 @@ const UserFilterPane = () => {
     // [filter, setFilter] = useState({} 
 
 
+    const keywordRef = useRef();
+    const yearRef = useRef();
+    const monthRef = useRef();
 
     const current = new Date(),
     [keyword, setKeyword] = useState(''),
@@ -23,6 +28,13 @@ const UserFilterPane = () => {
         categoryList: [],
         monthList: [],
     });
+
+    const handleClearFilter = () => {
+        setKeyword('');
+        setYear('');
+        setMonth('');
+        monthRef.current.value = '';
+    };
 
     const handleReset = (e) => {
         dispatchEvent(reset());
@@ -76,26 +88,23 @@ const UserFilterPane = () => {
              onChange={e => setYear(e.target.value)}
              />
         </Form.Group>
-        <Form.Group className='col-auto'>
-            <Form.Label className='visually-hidden'>
-                Month
-            </Form.Label>
-            <Form.Select
-             name='month'
-             value={month}
-             onChange={e => setMonth(e.target.value)}
-             title='Month'
-            >
-                <option value=''>-- Chọn tháng --</option>
-                {postFilter.monthList.length > 0 &&
-                 postFilter.monthList.map((item, index) =>
-                 <option key={index} value={item.value}>{item.text}</option>
-                 )}
-            </Form.Select>
+        <Form.Group className="col-auto">
+                <Form.Label className="visually-hidden">Tháng</Form.Label>
+                <Form.Select ref={monthRef} title="Tháng" name="month">
+                    <option value="">-- Chọn tháng --</option>
+                    {months.map((month) => (
+                        <option key={month} value={month}>
+                            Tháng {month}
+                        </option>
+                    ))}
+                </Form.Select>
         </Form.Group>
         <Form.Group className='col-auto'>
             <Button variant="primary" type='submit'>
                 Tìm/Lọc
+            </Button>
+            <Button variant="warning mx-2" onClick={handleClearFilter}>
+                    Bỏ lọc
             </Button>
             <Link to='/admin/users/edit' className='btn btn-success ms-2'>Thêm mới</Link>
             </Form.Group>

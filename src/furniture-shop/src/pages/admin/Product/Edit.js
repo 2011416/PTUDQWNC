@@ -65,7 +65,7 @@ const ProductEdit = () => {
 }
 if(id&& !isInteger(id))
     return(
-        <Navigate to = {`/400?redirectTo=/admin/posts`}/>
+        <Navigate to = {`/400?redirectTo=/admin/products`}/>
          
     )
 
