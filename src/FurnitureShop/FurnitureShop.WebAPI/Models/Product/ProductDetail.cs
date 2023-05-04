@@ -1,4 +1,6 @@
-﻿namespace FurnitureShop.WebAPI.Models.Product
+﻿using FurnitureShop.WebAPI.Models.Category;
+
+namespace FurnitureShop.WebAPI.Models.Product
 {
     public class ProductDetail
     {
@@ -11,5 +13,7 @@
         public string Material { get; set; }
         public string Collection { get; set; }
         public string UrlImage { get; set; }
+        public IList<CategoryDto> Categories { get; set; }
+
     }
 }

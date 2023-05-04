@@ -23,10 +23,10 @@ namespace FurnitureShop.Data.Contexts
 
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer(@"Server=DESKTOP-C0NGQA5;Database=FurnitureShop;Trusted_Connection=true;MultipleActiveResultSets=true;TrustServerCertificate=True");
-        }
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    optionsBuilder.UseSqlServer(@"Server=DESKTOP-C0NGQA5;Database=FurnitureShop;Trusted_Connection=true;MultipleActiveResultSets=true;TrustServerCertificate=True");
+        //}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

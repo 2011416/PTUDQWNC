@@ -16,7 +16,7 @@ namespace FurnitureShop.WebAPI.Models.Product
         public string Collection { get; set; }
         public string UrlImage { get; set; }
         public int UserId { get; set; }
-       
+
         public IFormFile ImageFile { get; set; }
 
         public string SelectedCategories { get; set; }
@@ -39,7 +39,7 @@ namespace FurnitureShop.WebAPI.Models.Product
                 Material = form["Material"],
                 Price = form["Price"] ,
                 UserId = int.Parse(form["UserId"]),
-                Size= form["Size"],
+                Size = form["Size"],
                 SelectedCategories = form["SelectedCategories"]
             };
         }

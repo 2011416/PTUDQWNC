@@ -1,5 +1,5 @@
 import axios from "axios";
-import { get_api } from "./Method";
+import { delete_api, get_api, post_api } from "./Method";
 
 export async function getProducts(PageNumber= 1, PageSize=5, Keyword="") {
   return get_api(`https://localhost:7226/api/product?PageSize=5&PageNumber=1`)
@@ -41,7 +41,14 @@ export async function deleteCategory(id = '') {
   return null;
 }
 
+export async function GetProductById(id=0){
+  return get_api(`https://localhost:7226/api/product/${id}`)
 
-
-
+}
+export async function AddOrUpdatedProduct(formData){
+  return post_api('https://localhost:7226/api/product', formData)
+}
+export async function DeleteProduct(id =0){
+  return delete_api(`https://localhost:7226/api/product/${id}`)
+}
 
