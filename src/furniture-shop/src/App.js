@@ -12,6 +12,8 @@ import Cart from './pages/Cart'
 import ViewProduct from './pages/ViewProduct'
 import Contact from './pages/Contact'
 import About from './pages/About'
+import Login from './pages/Login'
+import Register from './pages/Register';
 
 import Products from './pages/admin/Product/Product';
 import Categories from './pages/admin/Category/Categories';
@@ -38,6 +40,8 @@ function App() {
             <Route path='/catalog/:slug' element={<ViewProduct />}/>
             <Route path='/catalog' element={<Catalog />}/>
             <Route path='/cart' element={<Cart />}/>
+            <Route path='/login' element={<Login />}/>
+            <Route path='/register' element={<Register />}/>
             <Route path='/contact' element={<Contact />}/>
             <Route path='/about' element={<About />}/>
         </Route>
