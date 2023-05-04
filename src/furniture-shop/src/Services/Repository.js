@@ -43,12 +43,45 @@ export async function deleteCategory(id = '') {
 
 export async function GetProductById(id=0){
   return get_api(`https://localhost:7226/api/product/${id}`)
-
 }
+
 export async function AddOrUpdatedProduct(formData){
   return post_api('https://localhost:7226/api/product', formData)
 }
 export async function DeleteProduct(id =0){
   return delete_api(`https://localhost:7226/api/product/${id}`)
+}
+
+export async function GetCategoryById(id=0){
+  return get_api(`https://localhost:7226/api/category/${id}`)
+}
+
+export async function AddOrUpdatedCategory(formData){
+  return post_api('https://localhost:7226/api/category', formData)
+}
+export async function DeleteCategory(id =0){
+  return delete_api(`https://localhost:7226/api/category/${id}`)
+}
+
+export async function GetUserById(id=0){
+  return get_api(`https://localhost:7226/api/user/${id}`)
+}
+
+export async function AddOrUpdatedUser(formData){
+  return post_api('https://localhost:7226/api/user', formData)
+}
+export async function DeleteUser(id =0){
+  return delete_api(`https://localhost:7226/api/user/${id}`)
+}
+
+export async function GetDeliveryById(id=0){
+  return get_api(`https://localhost:7226/api/deliveries/${id}`)
+}
+
+export async function AddOrUpdateDelivery(formData){
+  return post_api('https://localhost:7226/api/deliveries', formData)
+}
+export async function DeleteDelivey(id =0){
+  return delete_api(`https://localhost:7226/api/deliveries/${id}`)
 }
 

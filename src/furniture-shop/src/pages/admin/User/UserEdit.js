@@ -4,7 +4,7 @@ import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
 
 import { decode, isInteger } from '../../../utils/Utiles';
 
-import { getUsers } from '../../../Services/Repository';
+import { AddOrUpdatedUser, GetUserById } from '../../../Services/Repository';
 
 const UserEdit = () => {
 
@@ -105,7 +105,7 @@ const UserEdit = () => {
                     <Button variant="primary" type="submit">
                         Lưu các thay đổi
                     </Button>
-                    <Link to="/admin/categories" className="btn btn-danger ms-2">
+                    <Link to="/admin/users" className="btn btn-danger ms-2">
                         Hủy và quay lại
                     </Link>
                 </div>

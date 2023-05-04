@@ -36,6 +36,7 @@ const Deliveries = () => {
               <th>Tên</th>
               <th>Slug</th>
               <th>Ngày</th>
+              <th>Xóa</th>
             </tr>
           </thead>
           <tbody>

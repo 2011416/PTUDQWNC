@@ -33,6 +33,8 @@ const Users = () => {
               <th>Email</th>
               <th>Số điện thoại</th>
               <th>Địa chỉ</th>
+              <th>Slug</th>
+              <th>Xóa</th>
             </tr>
           </thead>
           <tbody>

@@ -46,9 +46,9 @@ const Products = () => {
           <thead>
             <tr>
               <th>Tiêu đề</th>
-              <th>Mô tả</th>
-           
+              <th>Mô tả</th>         
               <th>Giá</th>
+              <th>Xóa</th>
             </tr>
           </thead>
           <tbody>

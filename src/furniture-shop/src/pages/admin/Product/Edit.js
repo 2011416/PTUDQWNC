@@ -267,7 +267,7 @@ if(id&& !isInteger(id))
           <Button variant="primary" type="submit">
             Lưu các thay đổi
           </Button>
-          <Link to="/admin/categories" className="btn btn-danger ms-2">
+          <Link to="/admin/products" className="btn btn-danger ms-2">
             Hủy và quay lại
           </Link>
         </div>

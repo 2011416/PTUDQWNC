@@ -21,7 +21,6 @@ const Categories = () => {
       setIsVisibleLoading(false);
     });
   }, [k, ps, p]);
-  console.log(categoriesList.items);
 
   return (
     <>
@@ -35,8 +34,8 @@ const Categories = () => {
             <tr>
               <th>Tiêu đề</th>
               <th>Mô tả</th>
-
               <th>Slug</th>
+              <th>Xóa</th>
             </tr>
           </thead>
           <tbody>
