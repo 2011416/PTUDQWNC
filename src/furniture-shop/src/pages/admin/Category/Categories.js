@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { getCategories } from "../../../Services/Repository";
 import Loading from "../../../components/Loading";
 import CategoryFilterPane from "../../../components/admin/CategoryFilterPane";
-import { deleteCategory } from "../../../Services/Repository";
 
 const Categories = () => {
   const [categoriesList, setCategoriesList] = useState([]);
@@ -20,7 +19,7 @@ const Categories = () => {
       else setCategoriesList([]);
       setIsVisibleLoading(false);
     });
-  }, [k, ps, p]);
+  }, [categoriesList,k, ps, p]);
 
   return (
     <>

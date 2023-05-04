@@ -72,7 +72,7 @@ const CategoryEdit = () => {
               onChange={(e) =>
                 setCategory({
                   ...category,
-                  name: e.target.value,
+                  name: e.target.value
                 })}/>
             <Form.Control.Feedback type="invalid">
               Không được bỏ trống

@@ -29,9 +29,6 @@ const DeliveryEdit = () => {
       if (data) {
         setDelivery({
           ...data,
-          selectDeliveries: data.deliveries
-            .map((deli) => deli?.name)
-            .join("\r\n"),
         });
       } else {
         setDelivery(initialState);
