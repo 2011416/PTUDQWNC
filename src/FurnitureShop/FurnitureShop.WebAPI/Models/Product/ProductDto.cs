@@ -1,4 +1,6 @@
-﻿namespace FurnitureShop.WebAPI.Models.Product
+﻿using FurnitureShop.WebAPI.Models.Category;
+
+namespace FurnitureShop.WebAPI.Models.Product
 {
     public class ProductDto
     {
@@ -12,5 +14,6 @@
         public string Collection { get; set; }
         public string UrlImage { get; set; }
         public int UserId { get; set; }
+        public  IList<CategoryDto> Categories { get; set; }
     }
 }

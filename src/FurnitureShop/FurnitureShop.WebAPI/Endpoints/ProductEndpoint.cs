@@ -42,12 +42,12 @@ namespace FurnitureShop.WebAPI.Endpoints
                 .WithName("AddProduct")
                 .Accepts<ProductEditModel>("multipart/form-data")
                 .Produces(401)
-                .Produces<ApiResponse<ProductItem>>();
+                .Produces<ApiResponse<ProductDetail>>();
             routeGroupBuilder.MapPut("/", AddProduct)
                .WithName("UpdateProduct")
                .Accepts<ProductEditModel>("multipart/form-data")
                .Produces(401)
-               .Produces<ApiResponse<ProductItem>>();
+               .Produces<ApiResponse<ProductDetail>>();
 
 
             routeGroupBuilder.MapDelete("/{id:int}", DeleteProduct)
@@ -151,7 +151,7 @@ namespace FurnitureShop.WebAPI.Endpoints
                 }
             }
             await productRepository.CreateOrUpdateProductAsync(product, model.GetSelectedCategories());
-            return Results.Ok(ApiResponse.Success(mapper.Map<ProductItem>(product), HttpStatusCode.Created));
+            return Results.Ok(ApiResponse.Success(mapper.Map<ProductDetail>(product), HttpStatusCode.Created));
 
         }
     }

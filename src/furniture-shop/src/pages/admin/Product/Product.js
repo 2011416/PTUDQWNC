@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Table from "react-bootstrap/Table";
 import { Link } from "react-router-dom";
-import { getProductFilter, getProducts } from "../../../Services/Repository";
+import { DeleteProduct, getProductFilter, getProducts } from "../../../Services/Repository";
 import Loading from "../../../components/Loading";
 import ProductFilterPane from "../../../components/admin/ProductFilterPane";
 
@@ -10,6 +10,19 @@ const Products = () => {
   const [isVisibleLoading, setIsVisibleLoading] = useState(true);
   let k = "", p = 1, ps = 3;
 
+  const handleDelete= (e, id)=> {
+    e.preventDefault();
+    DeleteAnProduct(id);
+    async function DeleteAnProduct(id){
+      if(window.confirm("Bạn có chắc xóa sản phẩm này")){
+        const response = await DeleteProduct(id);
+        if(!response)
+          alert("Xóa thành công")
+          else
+          alert("Đã xảy ra lỗi khi xóa")
+      }
+    }
+  }
 
   useEffect(() => {
     document.title = "Danh sách sản phẩm";
@@ -20,7 +33,7 @@ const Products = () => {
         setIsVisibleLoading(false);
     });
 
-  }, [k, ps,p]);
+  }, [productsList,k, ps,p]);
 
   return (
     <>
@@ -62,6 +75,7 @@ const Products = () => {
                       type="button"
                       className="btn btn-danger"
                       size='small'
+                      onClick={(e)=> handleDelete(e, item.id)}
                     >
                       Xóa
                     </button>
