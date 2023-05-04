@@ -20,7 +20,6 @@ const UserFilterPane = () => {
     const current = new Date(),
     [keyword, setKeyword] = useState(''),
     [authorId, setAuthorId] = useState(''),
-    [categoryId, setCategoryId] = useState(''),
     [year, setYear] = useState(current.getFullYear()),
     [month, setMonth] = useState(current.getMonth()),
     [postFilter, setPostFilter] = useState({

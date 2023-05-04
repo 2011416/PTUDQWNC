@@ -15,12 +15,12 @@ const CategoryEdit = () => {
     name: "",
     urlSlug: "",
     description: "",
-    selectCategories: "",
   };
 
   const [category, setCategory] = useState(initialState);
 
-  const { id } = useParams();
+  let { id } = useParams();
+  id = id ?? 0;
 
   useEffect(() => {
     document.title = "Thêm/cập nhật chủ đề";
@@ -28,14 +28,12 @@ const CategoryEdit = () => {
       if (data) {
         setCategory({
           ...data,
-          selectCategories: data.categories
-            .map((cate) => cate?.name)
-            .join("\r\n"),
         });
-      } else {
+      } 
+      else {
         setCategory(initialState);
       }
-    });
+    })
   }, []);
 
   const handleSubmit = (e) => {
@@ -60,7 +58,6 @@ const CategoryEdit = () => {
         method="post"
         encType="multipart/form-data"
         onSubmit={handleSubmit}
-        noValidate
         className="mb-5 px-4"
       >
         <Form.Control type="hidden" name="id" value={category.id} />
@@ -76,9 +73,7 @@ const CategoryEdit = () => {
                 setCategory({
                   ...category,
                   name: e.target.value,
-                })
-              }
-            />
+                })}/>
             <Form.Control.Feedback type="invalid">
               Không được bỏ trống
             </Form.Control.Feedback>

@@ -53,14 +53,14 @@ export async function DeleteProduct(id =0){
 }
 
 export async function GetCategoryById(id=0){
-  return get_api(`https://localhost:7226/api/category/${id}`)
+  return get_api(`https://localhost:7226/api/categories/${id}`)
 }
 
 export async function AddOrUpdatedCategory(formData){
-  return post_api('https://localhost:7226/api/category', formData)
+  return post_api('https://localhost:7226/api/categories', formData)
 }
 export async function DeleteCategory(id =0){
-  return delete_api(`https://localhost:7226/api/category/${id}`)
+  return delete_api(`https://localhost:7226/api/categories/${id}`)
 }
 
 export async function GetUserById(id=0){

@@ -13,16 +13,7 @@ const CategoryFilterPane = () => {
     const keywordRef = useRef();
 
     const current = new Date(),
-    [keyword, setKeyword] = useState(''),
-    [authorId, setAuthorId] = useState(''),
-    [categoryId, setCategoryId] = useState(''),
-    [year, setYear] = useState(current.getFullYear()),
-    [month, setMonth] = useState(current.getMonth()),
-    [postFilter, setPostFilter] = useState({
-        authorList: [],
-        categoryList: [],
-        monthList: [],
-    });
+    [keyword, setKeyword] = useState('')
 
     const handleReset = (e) => {
         dispatchEvent(reset());

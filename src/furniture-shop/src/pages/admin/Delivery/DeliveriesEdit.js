@@ -20,7 +20,8 @@ const DeliveryEdit = () => {
 
   const [delivery, setDelivery] = useState(initialState);
 
-  const { id } = useParams();
+  let { id } = useParams();
+  id = id ?? 0;
 
   useEffect(() => {
     document.title = "Thêm/cập nhật đơn";
