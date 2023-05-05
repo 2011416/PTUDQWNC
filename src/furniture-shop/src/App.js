@@ -14,6 +14,7 @@ import Contact from './pages/Contact'
 import About from './pages/About'
 import Login from './pages/Login'
 import Register from './pages/Register';
+import Policy from './pages/Policy';
 
 import Products from './pages/admin/Product/Product';
 import Categories from './pages/admin/Category/Categories';
@@ -43,6 +44,7 @@ function App() {
             <Route path='/register' element={<Register />}/>
             <Route path='/contact' element={<Contact />}/>
             <Route path='/about' element={<About />}/>
+            <Route path='/policy' element={<Policy />}/>
         </Route>
         
         <Route path='/admin' element={<AdminLayout />} >

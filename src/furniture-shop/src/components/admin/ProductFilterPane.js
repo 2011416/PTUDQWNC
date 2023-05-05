@@ -54,7 +54,8 @@ const ProductFilterPane = () => {
                 type='text'
                 placeholder="Nhập từ khóa..."
                 name="keyword"
-                value={productFilter.keyword}
+                value={keyword}
+                // value={productFilter.keyword}
                 onChange={e => dispatch(setKeyword(e.target.value))} />                
         </Form.Group>  
         
@@ -74,7 +75,7 @@ const ProductFilterPane = () => {
 
     )}
     </Form.Select>
-    </Form.Group>    
+    </Form.Group>     */}
         <Form.Group className='col-auto'>
             <Button variant="primary" type='submit'>
                 Tìm/Lọc
@@ -83,7 +84,7 @@ const ProductFilterPane = () => {
                     Bỏ lọc
             </Button>
             <Link to='/admin/products/edit' className='btn btn-success ms-2'>Thêm mới</Link>
-            </Form.Group> */}
+            </Form.Group>
         </Form>
     );
 }

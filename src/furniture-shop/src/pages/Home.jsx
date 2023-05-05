@@ -19,7 +19,7 @@ import { getProducts, getProductFilter } from '../Services/Repository'
 const Home = () => {
   const [productsList, setProductsList] = useState([]);
   const [isVisibleLoading, setIsVisibleLoading] = useState(true);
-  let k = "", p = 1, ps = 3;
+  let k = "", p = 1, ps = 10;
 
 
   useEffect(() => {
@@ -33,11 +33,7 @@ const Home = () => {
 
   }, [k, ps,p]);
 
-    useEffect(() => {
-        window.scrollTo(0, 0);
-    }, [productsList]);
-
-    if (productsList.length > 0)
+    if (productsList)
     return (
         <div className='p-4'>
             {productsList.map((item, index) => {

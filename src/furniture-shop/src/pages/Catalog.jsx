@@ -16,7 +16,7 @@ const Catalog = () => {
 
     const [productsList, setProductsList] = useState([]);
     const [isVisibleLoading, setIsVisibleLoading] = useState(true);
-    let k = "", p = 1, ps = 3;
+    let k = "", p = 1, ps = 10;
 
     useEffect(() => {
         document.title = "Danh sách sản phẩm";

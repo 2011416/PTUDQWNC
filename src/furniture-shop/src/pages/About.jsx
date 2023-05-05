@@ -2,6 +2,10 @@ import React from 'react';
 import Helmet from '../components/Helmet';
 import { Link } from 'react-router-dom';
 import banner from "../assets/images/banner.png"
+import policy from '../assets/fake-data/policy';
+import PolicyCard from '../components/PolicyCard';
+import Grid from '../components/Grid';
+import Section, { SectionTitle, SectionBody } from '../components/Section'
 
 const About = () => {
   return (
@@ -16,6 +20,31 @@ const About = () => {
     <Link to="/catalog">
         <img src={banner} alt="" />
     </Link>
+
+    <h1>.......................................................................................................................................................................</h1>
+
+     {/* policy section */}
+     <Section>
+                <SectionBody>
+                    <Grid
+                        col={4}
+                        mdCol={2}
+                        smCol={1}
+                        gap={20}
+                    >
+                        {
+                            policy.map((item, index) => <Link key={index} to="/policy">
+                                <PolicyCard
+                                    name={item.name}
+                                    description={item.description}
+                                    icon={item.icon}
+                                />
+                            </Link>)
+                        }
+                    </Grid>
+                </SectionBody>
+            </Section>
+          {/* end policy section */}
     
     </Helmet>
   );
