@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Table from "react-bootstrap/Table";
 import { Link } from "react-router-dom";
 import Loading from "../../../components/Loading";
-import { getDeliveries } from "../../../Services/Repository";
+import { DeleteDelivey, getDeliveries } from "../../../Services/Repository";
 import DeliveryFilterPane from "../../../components/admin/DeliveryFilterPane";
 
 const Deliveries = () => {
@@ -12,7 +12,21 @@ const Deliveries = () => {
     p = 1,
     ps = 10;
 
-  useEffect(() => {
+    const handleDelete= (e, id)=> {
+      e.preventDefault();
+      DeleteAnDelivery(id);
+      async function DeleteAnDelivery(id){
+        if(window.confirm("Bạn có chắc xóa đơn này")){
+          const response = await DeleteDelivey(id);
+          if(!response)
+            alert("Xóa thành công")
+            else
+            alert("Đã xảy ra lỗi khi xóa")
+        }
+      }
+    }
+
+    useEffect(() => {
     document.title = "Danh sách đơn";
     getDeliveries(k, ps, p).then((data) => {
       if (data) setDeliveriesList(data.items);
@@ -62,6 +76,7 @@ const Deliveries = () => {
                       type="button"
                       className="btn btn-danger"
                       size='small'
+                      onClick={(e)=> handleDelete(e, item.id)}
                     >
                       Xóa
                     </button>

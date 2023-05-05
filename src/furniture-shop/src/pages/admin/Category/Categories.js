@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Table from "react-bootstrap/Table";
 import { Link } from "react-router-dom";
-import { getCategories } from "../../../Services/Repository";
+import { deleteCategory, getCategories } from "../../../Services/Repository";
 import Loading from "../../../components/Loading";
 import CategoryFilterPane from "../../../components/admin/CategoryFilterPane";
+import { DeleteCategory } from "../../../Services/Repository";
 
 const Categories = () => {
   const [categoriesList, setCategoriesList] = useState([]);
@@ -12,10 +13,25 @@ const Categories = () => {
     p = 1,
     ps = 10;
 
+    const handleDelete= (e, id)=> {
+      e.preventDefault();
+      DeleteAnCategory(id);
+      async function DeleteAnCategory(id){
+        if(window.confirm("Bạn có chắc xóa chủ đề này")){
+          const response = await DeleteCategory(id);
+          if(!response)
+            alert("Xóa thành công")
+            else
+            alert("Đã xảy ra lỗi khi xóa")
+        }
+      }
+    }
+
   useEffect(() => {
     document.title = "Danh sách chủ đề";
     getCategories(k, ps, p).then((data) => {
-      if (data) setCategoriesList(data.items);
+      if (data) 
+      setCategoriesList(data.items);
       else setCategoriesList([]);
       setIsVisibleLoading(false);
     });
@@ -59,6 +75,7 @@ const Categories = () => {
                       type="button"
                       className="btn btn-danger"
                       size='small'
+                      onClick={(e)=> handleDelete(e, item.id)}
                     >
                       Xóa
                     </button>

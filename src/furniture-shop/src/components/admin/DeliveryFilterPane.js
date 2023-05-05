@@ -5,27 +5,18 @@ import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
 import { reset } from "../../redux/Reducer";
 
-const months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-
 const DeliveryFilterPane = () => {
     // const postFilter = useSelector(state => state.postFilter),
     // dispatch = useDispatch(),
     // [filter, setFilter] = useState({} 
 
     const keywordRef = useRef();
-    const yearRef = useRef();
-    const monthRef = useRef();
 
     const current = new Date(),
-    [keyword, setKeyword] = useState(''),
-    [year, setYear] = useState(current.getFullYear()),
-    [month, setMonth] = useState(current.getMonth())
+    [keyword, setKeyword] = useState('')
 
     const handleClearFilter = () => {
-        setKeyword('');
-        setYear('');
-        setMonth('');
-        monthRef.current.value = '';
+        setKeyword(''); 
     };
 
     const handleReset = (e) => {
@@ -50,31 +41,7 @@ const DeliveryFilterPane = () => {
                 name="keyword"
                 value={keyword}
                 onChange={e => setKeyword(e.target.value)} />                
-        </Form.Group>
-        <Form.Group className='col-auto'>
-            <Form.Label className='visually-hidden'>
-                Year
-            </Form.Label>
-            <Form.Control
-             type='number'
-             placeholder='Nhập năm...'
-             name='year'
-             value={year}
-             max={year}
-             onChange={e => setYear(e.target.value)}
-             />
-        </Form.Group>
-        <Form.Group className="col-auto">
-                <Form.Label className="visually-hidden">Tháng</Form.Label>
-                <Form.Select ref={monthRef} title="Tháng" name="month">
-                    <option value="">-- Chọn tháng --</option>
-                    {months.map((month) => (
-                        <option key={month} value={month}>
-                            Tháng {month}
-                        </option>
-                    ))}
-                </Form.Select>
-        </Form.Group>
+        </Form.Group>  
         <Form.Group className='col-auto'>
             <Button variant="primary" type='submit'>
                 Tìm/Lọc

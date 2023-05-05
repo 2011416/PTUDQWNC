@@ -33,6 +33,7 @@ const CategoryEdit = () => {
       else {
         setCategory(initialState);
       }
+      console.log(category);
     })
   }, []);
 
@@ -41,7 +42,7 @@ const CategoryEdit = () => {
       let form = new FormData(e.target);
       AddOrUpdatedCategory(form).then((data) => {
         console.log(data);
-        if (data) 
+        if (!data) 
             alert("Lưu thành công!");
         else 
             alert("Đã xảy ra lỗi!!");

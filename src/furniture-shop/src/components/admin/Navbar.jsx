@@ -27,12 +27,6 @@ const Navbar = () => {
 							</Link>
 						</Nav.Item>
 						<Nav.Item>
-							<Link to='/admin/roles'
-								className='nav-link text-dark'>
-								Role
-							</Link>
-						</Nav.Item>
-						<Nav.Item>
 							<Link to='/admin/products'
 								className='nav-link text-dark'>
 								Sản phẩm

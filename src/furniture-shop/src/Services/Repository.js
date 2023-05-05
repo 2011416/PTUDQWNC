@@ -53,7 +53,7 @@ export async function DeleteProduct(id =0){
 }
 
 export async function GetCategoryById(id=0){
-  return get_api(`https://localhost:7226/api/categories/${id}`)
+  return get_api(`https://localhost:7226/api/categories/id/${id}`)
 }
 
 export async function AddOrUpdatedCategory(formData){

@@ -8,8 +8,8 @@ const initialState = {
     month: ''
 };
 
-const postFilterReducer = createSlice({
-    name: 'postFilter',
+const productFilterReducer = createSlice({
+    name: 'productFilter',
     initialState,
     reducers: {
         reset: (state, action) => {
@@ -19,6 +19,12 @@ const postFilterReducer = createSlice({
             return {
                 ...state,
                 keyword: action.payload,
+            };
+        },
+        updateUserId: (state, action) => {
+            return {
+                ...state,
+                userId: action.payload,
             };
         },
         updateCategoryId: (state, action) => {
@@ -45,12 +51,12 @@ const postFilterReducer = createSlice({
 export const {
     reset,
     updateKeyword,
-    updateAuthorId,
+    updateUserId,
     updateCategoryId,
     updateMonth,
-    updateYear } = postFilterReducer.actions;
+    updateYear } = productFilterReducer.actions;
 
-export const reducer = postFilterReducer.reducer;
+export const reducer = productFilterReducer.reducer;
 
 
 

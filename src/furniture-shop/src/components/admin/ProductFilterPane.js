@@ -3,29 +3,23 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
-import { reset } from "../../redux/Reducer";
-
-const months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+import { reset, updateUserId } from "../../redux/Reducer";
+import { getProductFilter } from "../../Services/Repository";
 
 const ProductFilterPane = () => {
-    // const postFilter = useSelector(state => state.postFilter),
-    // dispatch = useDispatch(),
+    const productFilter = useSelector((state) => state.productFilter),
+    dispatch = useDispatch()
     // [filter, setFilter] = useState({} 
 
     const keywordRef = useRef();
-    const yearRef = useRef();
-    const monthRef = useRef();
-
+    const [filter, setFilter] = useState({
+        userList:[]
+    });
     const current = new Date(),
-    [keyword, setKeyword] = useState(''),
-    [year, setYear] = useState(current.getFullYear()),
-    [month, setMonth] = useState(current.getMonth())
+    [keyword, setKeyword] = useState('')
 
     const handleClearFilter = () => {
         setKeyword('');
-        setYear('');
-        setMonth('');
-        monthRef.current.value = '';
     };
 
     const handleReset = (e) => {
@@ -35,6 +29,18 @@ const ProductFilterPane = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
     };
+    useEffect(() => {
+        getProductFilter().then((data) => {
+            if(data){
+                setFilter({
+                    userList: data.userId
+                })
+            }else{
+                setFilter({
+                    userList:[]
+                })
+        }}
+        )    })
 
     return (
         <Form method="get"
@@ -48,33 +54,27 @@ const ProductFilterPane = () => {
                 type='text'
                 placeholder="Nhập từ khóa..."
                 name="keyword"
-                value={keyword}
-                onChange={e => setKeyword(e.target.value)} />                
-        </Form.Group>
-        <Form.Group className='col-auto'>
-            <Form.Label className='visually-hidden'>
-                Year
-            </Form.Label>
-            <Form.Control
-             type='number'
-             placeholder='Nhập năm...'
-             name='year'
-             value={year}
-             max={year}
-             onChange={e => setYear(e.target.value)}
-             />
-        </Form.Group>
-        <Form.Group className="col-auto">
-                <Form.Label className="visually-hidden">Tháng</Form.Label>
-                <Form.Select ref={monthRef} title="Tháng" name="month">
-                    <option value="">-- Chọn tháng --</option>
-                    {months.map((month) => (
-                        <option key={month} value={month}>
-                            Tháng {month}
-                        </option>
-                    ))}
-                </Form.Select>
-        </Form.Group>
+                value={productFilter.keyword}
+                onChange={e => dispatch(setKeyword(e.target.value))} />                
+        </Form.Group>  
+        
+        {/* <Form.Group className='col-auto'>
+    <Form.Label className='visually-hidden'>
+    CategoryId
+    </Form.Label>
+    <Form.Select name='userId'
+    value={productFilter.userId}
+    onChange={e => dispatch(updateUserId(e.target.value))}
+    title='user Id'
+    >
+    <option value=''>-- Chọn người dùng --</option>
+    {filter.userList.length > 0 &&
+    filter.userList.map((item, index) =>
+    <option key={index} value={item.value}>{item.text}</option>
+
+    )}
+    </Form.Select>
+    </Form.Group>    
         <Form.Group className='col-auto'>
             <Button variant="primary" type='submit'>
                 Tìm/Lọc
@@ -83,7 +83,7 @@ const ProductFilterPane = () => {
                     Bỏ lọc
             </Button>
             <Link to='/admin/products/edit' className='btn btn-success ms-2'>Thêm mới</Link>
-            </Form.Group>
+            </Form.Group> */}
         </Form>
     );
 }

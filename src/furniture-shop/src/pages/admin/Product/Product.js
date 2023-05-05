@@ -38,7 +38,7 @@ const Products = () => {
   return (
     <>
       <h1>Danh sách sản phẩm</h1>
-      <ProductFilterPane/>
+      {/* <ProductFilterPane/> */}
       {isVisibleLoading ? (
         <Loading />
       ) : (
