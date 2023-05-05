@@ -96,7 +96,7 @@ const Home = () => {
                                     img01={img1}
                                     img02={img2}
                                     name={item.name}
-                                    price={Number(item.price)}
+                                    price={item.price}
                                     slug={item.urlSlug}
                                 />
                             ))
@@ -125,7 +125,7 @@ const Home = () => {
                                     img01={img1}
                                     img02={img2}
                                     name={item.name}
-                                    price={Number(item.price)}
+                                    price={item.price}
                                     slug={item.urlSlug}
                                 />
                             ))
@@ -164,7 +164,7 @@ const Home = () => {
                                     img01={img1}
                                     img02={img2}
                                     name={item.name}
-                                    price={Number(item.price)}
+                                    price={item.price}
                                     slug={item.urlSlug}
                                 />
                             ))
