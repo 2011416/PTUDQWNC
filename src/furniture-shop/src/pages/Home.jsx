@@ -17,6 +17,11 @@ import banner from "../assets/images/banner.png"
 import { getProducts, getProductFilter } from '../Services/Repository'
 
 const Home = () => {
+
+  const img1 = require('../assets/images/products/product-01 (1).jpg')
+  const img2 = require('../assets/images/products/product-01 (2).jpg')
+    
+
   const [productsList, setProductsList] = useState([]);
   const [isVisibleLoading, setIsVisibleLoading] = useState(true);
   let k = "", p = 1, ps = 10;
@@ -32,10 +37,6 @@ const Home = () => {
     });
 
   }, [k, ps,p]);
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-}, [productsList]);
 
 
     if (productsList.length > 0)
@@ -92,8 +93,8 @@ const Home = () => {
                             productsList.map((item, index) => (
                                 <ProductCard
                                     key={index}
-                                    img01={item.urlImage}
-                                    img02={item.urlImage}
+                                    img01={img1}
+                                    img02={img2}
                                     name={item.name}
                                     price={Number(item.price)}
                                     slug={item.urlSlug}
@@ -121,8 +122,8 @@ const Home = () => {
                             productsList.map((item, index) => (
                                 <ProductCard
                                     key={index}
-                                    img01={item.urlImage}
-                                    img02={item.urlImage}
+                                    img01={img1}
+                                    img02={img2}
                                     name={item.name}
                                     price={Number(item.price)}
                                     slug={item.urlSlug}
@@ -160,8 +161,8 @@ const Home = () => {
                              productsList.map((item, index) => (
                                 <ProductCard
                                     key={index}
-                                    img01={item.urlImage}
-                                    img02={item.urlImage}
+                                    img01={img1}
+                                    img02={img2}
                                     name={item.name}
                                     price={Number(item.price)}
                                     slug={item.urlSlug}
