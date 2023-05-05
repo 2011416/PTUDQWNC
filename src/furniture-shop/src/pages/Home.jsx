@@ -33,7 +33,7 @@ const Home = () => {
 
   }, [k, ps,p]);
 
-    if (productsList)
+    if (productsList.length > 0)
     return (
         <div className='p-4'>
             {productsList.map((item, index) => {
