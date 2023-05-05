@@ -55,8 +55,9 @@ const ProductFilterPane = () => {
                 placeholder="Nhập từ khóa..."
                 name="keyword"
                 value={keyword}
-                // value={productFilter.keyword}
-                onChange={e => dispatch(setKeyword(e.target.value))} />                
+                onChange={e => setKeyword(e.target.value)} /> 
+                {/* // value={productFilter.keyword}
+                // onChange={e => dispatch(setKeyword(e.target.value))} />                 */}
         </Form.Group>  
         
         {/* <Form.Group className='col-auto'>
