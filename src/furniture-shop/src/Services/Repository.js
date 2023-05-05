@@ -75,7 +75,7 @@ export async function DeleteUser(id =0){
 }
 
 export async function GetDeliveryById(id=0){
-  return get_api(`https://localhost:7226/api/deliveries/${id}`)
+  return get_api(`https://localhost:7226/api/deliveries/id/${id}`)
 }
 
 export async function AddOrUpdateDelivery(formData){
