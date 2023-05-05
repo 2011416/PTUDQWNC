@@ -42,15 +42,13 @@ const Home = () => {
     if (productsList.length > 0)
     return (
         <div className='p-4'>
-            {productsList.map((item, index) => {
-                return (
                     <Helmet title="Trang chủ">
           {/* hero slider */}
           <HeroSlider 
               data={heroSliderData}
               control={true}
-              auto={false}
-              timeOut={5000}
+              auto={true}
+              timeOut={2000}
           />
           {/* end hero slider */}
 
@@ -58,7 +56,7 @@ const Home = () => {
              <Section>
                 <SectionBody>
                     <Grid
-                        col={4}
+                        col={3}
                         mdCol={2}
                         smCol={1}
                         gap={20}
@@ -84,7 +82,7 @@ const Home = () => {
                 </SectionTitle>
                 <SectionBody>
                     <Grid
-                        col={4}
+                        col={3}
                         mdCol={2}
                         smCol={1}
                         gap={20}
@@ -113,7 +111,7 @@ const Home = () => {
                 </SectionTitle>
                 <SectionBody>
                     <Grid
-                        col={4}
+                        col={3}
                         mdCol={2}
                         smCol={1}
                         gap={20}
@@ -152,7 +150,7 @@ const Home = () => {
                 </SectionTitle>
                 <SectionBody>
                     <Grid
-                        col={4}
+                        col={3}
                         mdCol={2}
                         smCol={1}
                         gap={20}
@@ -175,8 +173,7 @@ const Home = () => {
             {/* end popular product section */}
 
     </Helmet>
-                );
-            })}
+
         </div>
     );
     else return (
