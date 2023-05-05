@@ -24,7 +24,7 @@ const Login = () => {
            <div className="d-flex flex-column align-items-center">
             ...<h1>Đăng nhập thành công</h1>
             <Link to="/" className="btn btn-info btn-rounded">
-                    Về trang chủ thôi
+                    Quay về trang chủ
             </Link>
             </div>
       </section>
@@ -39,7 +39,7 @@ const Login = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             type="email"
-            placeholder="YourEmail@gmail.com"
+            placeholder="Your Email"
             id="email"
             name="email"
           />
