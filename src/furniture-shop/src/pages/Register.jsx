@@ -1,17 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-const Register = (props) => {
+const Register = () => {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const [name, setName] = useState("");
 
+  const [success, setSuccess] = useState(false);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(email);
+    setSuccess(true);
   };
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+}, [success]);
+
   return (
+    <>
+    {success ? (
+      <section>
+           <div className="d-flex flex-column align-items-center">
+            ...<h1>Đăng ký thành công</h1>
+            <Link to="/" className="btn btn-info btn-rounded">
+                    Về trang chủ thôi
+            </Link>
+            </div>
+      </section>
+  ) : (
+      <section>
     <div className="login-register">
       <div className="auth-form-container">
         <h2>Register</h2>
@@ -42,7 +61,7 @@ const Register = (props) => {
             id="password"
             name="password"
           />
-          <button type="submit">Log In</button>
+          <button type="submit">Sign Up</button>
         </form>
         <div>
           <Link to="/login">
@@ -53,7 +72,10 @@ const Register = (props) => {
         </div>
       </div>
     </div>
-  );
-};
+    </section>  
+   )}
+   </>
+)
+}
 
 export default Register;

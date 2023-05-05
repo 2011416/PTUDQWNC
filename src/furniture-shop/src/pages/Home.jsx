@@ -33,6 +33,11 @@ const Home = () => {
 
   }, [k, ps,p]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+}, [productsList]);
+
+
     if (productsList.length > 0)
     return (
         <div className='p-4'>
