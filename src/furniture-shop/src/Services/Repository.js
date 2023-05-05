@@ -52,6 +52,10 @@ export async function DeleteProduct(id =0){
   return delete_api(`https://localhost:7226/api/product/${id}`)
 }
 
+export async function GetProductBySlug(slug=''){
+  return get_api(`https://localhost:7226/api/product/byslug/${slug}`)
+}
+
 export async function GetCategoryById(id=0){
   return get_api(`https://localhost:7226/api/categories/id/${id}`)
 }

@@ -23,7 +23,6 @@ const Home = () => {
     
 
   const [productsList, setProductsList] = useState([]);
-  const [isVisibleLoading, setIsVisibleLoading] = useState(true);
   let k = "", p = 1, ps = 10;
 
 
@@ -33,7 +32,6 @@ const Home = () => {
       if (data) 
         setProductsList(data.items);
       else setProductsList([]);
-        setIsVisibleLoading(false);
     });
 
   }, [k, ps,p]);
@@ -42,6 +40,8 @@ const Home = () => {
     if (productsList.length > 0)
     return (
         <div className='p-4'>
+                 {/* {productsList.map((item, index) => {
+                return ( */}
                     <Helmet title="Trang chủ">
           {/* hero slider */}
           <HeroSlider 
@@ -173,7 +173,8 @@ const Home = () => {
             {/* end popular product section */}
 
     </Helmet>
-
+                {/* );
+            })} */}
         </div>
     );
     else return (
