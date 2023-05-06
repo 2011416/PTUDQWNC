@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Helmet from "../components/Helmet";
 import { Link } from "react-router-dom";
 import banner from "../assets/images/banner.png";
+import emailjs from "@emailjs/browser";
 
 function Contact() {
   const [name, setName] = useState("");
@@ -18,6 +19,31 @@ function Contact() {
     setMessage("");
 
     setSuccess(true);
+    sendEmail();
+  };
+
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        "service_9l5nbs6",
+        "template_kcvidt9",
+        form.current,
+        "2oQtt2wqFiYh2NZ6X"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+
+      setSuccess(true);
   };
 
   useEffect(() => {
@@ -40,12 +66,13 @@ function Contact() {
           <Helmet title="Liên hệ">
             <div className="contact-page">
               <h2>Contact Us</h2>
-              <form onSubmit={handleSubmit}>
+              {/* <form onSubmit={sendEmail}>
                 <label>
                   Name:
                   <input
                     type="text"
                     placeholder="Your Name"
+                    name="user_name"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                   />
@@ -58,7 +85,7 @@ function Contact() {
                     type="email"
                     placeholder="Your Email"
                     id="email"
-                    name="email"
+                    name="user_email"
                   />
                 </label>
                 <label>
@@ -70,6 +97,15 @@ function Contact() {
                   ></textarea>
                 </label>
                 <button type="submit">Send</button>
+              </form> */}
+              <form ref={form} onSubmit={sendEmail}>
+                <label>Name</label>
+                <input type="text" name="user_name"  placeholder="Your Name"/>
+                <label>Email</label>
+                <input type="email" name="user_email"   placeholder="Your Email" />
+                <label>Message</label>
+                <textarea name="message"  placeholder="Your Message" ></textarea>
+                <button type="submit" value="Send">Gửi</button>
               </form>
               <div>
                 <iframe
