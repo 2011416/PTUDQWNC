@@ -48,7 +48,7 @@ const Home = () => {
               data={heroSliderData}
               control={true}
               auto={true}
-              timeOut={2000}
+              timeOut={4000}
           />
           {/* end hero slider */}
 
@@ -185,7 +185,7 @@ const Home = () => {
               data={heroSliderData}
               control={true}
               auto={false}
-              timeOut={5000}
+              timeOut={4000}
           />
           {/* end hero slider */}
 

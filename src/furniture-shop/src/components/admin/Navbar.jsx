@@ -23,7 +23,7 @@ const Navbar = () => {
 						<Nav.Item>
 							<Link
 								to='/admin/users' className='nav-link text-dark'>
-								Tài khoản
+								Người dùng
 							</Link>
 						</Nav.Item>
 						<Nav.Item>
