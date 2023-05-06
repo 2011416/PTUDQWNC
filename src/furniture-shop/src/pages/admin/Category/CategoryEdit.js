@@ -33,6 +33,7 @@ const CategoryEdit = () => {
       else {
         setCategory(initialState);
       }
+      console.log(category);
     })
   }, []);
 
@@ -108,7 +109,7 @@ const CategoryEdit = () => {
               type="text"
               name="description"
               title="description"
-              value={category.description|| ''}
+              value={decode(category.description|| '')}
               onChange={e=> setCategory({
                 ...category,
                 description: e.target.value

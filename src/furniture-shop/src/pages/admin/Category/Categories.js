@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Table from "react-bootstrap/Table";
 import { Link } from "react-router-dom";
-import { deleteCategory, getCategories, getCategoriesFilter } from "../../../Services/Repository";
+import { getCategoriesFilter } from "../../../Services/Repository";
 import Loading from "../../../components/Loading";
 import CategoryFilterPane from "../../../components/admin/CategoryFilterPane";
 import { DeleteCategory } from "../../../Services/Repository";
@@ -77,7 +77,10 @@ const Categories = () => {
                       type="button"
                       className="btn btn-danger"
                       size='small'
-                      onClick={(e)=> handleDelete(e, item.id)}
+                      onClick={(e)=> {handleDelete(e, item.id)
+                        window.location.reload(false)
+                      }}
+                      
                     >
                       Xóa
                     </button>

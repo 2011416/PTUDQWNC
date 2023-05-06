@@ -4,10 +4,7 @@ import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 
 import { decode, isEmptyOrSpaces, isInteger } from "../../../utils/Utiles";
 
-import {
-  AddOrUpdatedProduct,
-  GetProductById,
-} from "../../../Services/Repository";
+import { AddOrUpdatedProduct, GetProductById } from "../../../Services/Repository";
 
 const ProductEdit = () => {
   const initialState = {
@@ -19,11 +16,10 @@ const ProductEdit = () => {
     size: "",
     material: "",
     selectCategories: "",
-    urlImage: "",
-    collection: "",
-    imageFile: "",
-    userId: 0,
-    urlImage: "",
+    urlImage:"",
+    collection:"",
+    imageFile:"",
+    userId:0
   };
 
   const [product, setProduct] = useState(initialState);
@@ -33,20 +29,22 @@ const ProductEdit = () => {
 
   useEffect(() => {
     document.title = "Thêm/cập nhật sản phẩm";
-    GetProductById(id).then((data) => {
-      if (data) {
-        setProduct({
-          ...data,
-          selectCategories: data.categories
-            .map((cate) => cate?.name)
-            .join("\r\n"),
-        });
-      } else {
-        setProduct(initialState);
-      }
-    });
-  }, []);
+    GetProductById(id).then((data)=> {
+        if(data){
+            setProduct({
+                ...data,
+                selectCategories: data.categories.map(cate=> cate?.name).join('\r\n'),
 
+            })
+        }
+        else{
+                setProduct(initialState);
+        }
+    })
+    
+  }, []);
+  const [validated, setValidated]= useState(false);
+ 
   const handleSubmit = (e) => {
     e.preventDefault();
    if(e.currentTarget.checkValidity() ===false){
@@ -63,35 +61,33 @@ const ProductEdit = () => {
         else
             alert('Đã xảy ra lỗi!!');
     });
-  };
-  if (id && !isInteger(id))
-    return <Navigate to={`/400?redirectTo=/admin/products`} />;
+    }
+    
+}
+if(id&& !isInteger(id))
+    return(
+        <Navigate to = {`/400?redirectTo=/admin/products`}/>
+         
+    )
 
   return (
     <>
       <h1 className="px-4 py-3 text-danger">Thêm/cập nhật sản phẩm</h1>
-      <Form
-        method="post"
-        encType="multipart/form-data"
-        onSubmit={handleSubmit}
-        className="mb-5 px-4"
-      >
+      <Form 
+      method="post"
+      encType="multipart/form-data"
+      onSubmit={handleSubmit} noValidate validated={validated}
+      className="mb-5 px-4">
         <Form.Control type="hidden" name="id" value={product.id} />
         <div className="row mb-3">
           <Form.Label className="col-sm-2 col-form-label">Tên</Form.Label>
           <div className="col-sm-10">
-            <Form.Control
-              type="text"
-              name="name"
-              required
-              value={product.name || ""}
-              onChange={(e) =>
-                setProduct({
-                  ...product,
-                  name: e.target.value,
-                })
-              }
-            />
+            <Form.Control type="text" name="name" required 
+            value={product.name|| ''} 
+            onChange={e=> setProduct({
+                ...product,
+                name: e.target.value
+            })}/>
             <Form.Control.Feedback type="invalid">
               Không được bỏ trống
             </Form.Control.Feedback>
@@ -105,15 +101,13 @@ const ProductEdit = () => {
               name="urlSlug"
               title="Url slug"
               required
-              value={product.urlSlug || ""}
-              onChange={(e) =>
-                setProduct({
-                  ...product,
-                  urlSlug: e.target.value,
-                })
-              }
+              value= {product.urlSlug|| ''}
+              onChange={e=> setProduct({
+                ...product,
+                urlSlug: e.target.value
+              })}
             />
-
+            
             <Form.Control.Feedback type="invalid">
               Không được bỏ trống
             </Form.Control.Feedback>
@@ -127,39 +121,33 @@ const ProductEdit = () => {
               name="UserID"
               title="User ID"
               required
-              value={product.userId || ""}
-              onChange={(e) =>
-                setProduct({
-                  ...product,
-                  userId: e.target.value,
-                })
-              }
+              value= {product.userId|| ''}
+              onChange={e=> setProduct({
+                ...product,
+                userId: e.target.value
+              })}
             />
-
+            
             <Form.Control.Feedback type="invalid">
               Không được bỏ trống
             </Form.Control.Feedback>
           </div>
         </div>
         <div className="row mb-3">
-          <Form.Label className="col-sm-2 col-form-label">
-            collection
-          </Form.Label>
+          <Form.Label className="col-sm-2 col-form-label">collection</Form.Label>
           <div className="col-sm-10">
             <Form.Control
               type="text"
               name="collection"
               title="Collection"
               required
-              value={product.collection || ""}
-              onChange={(e) =>
-                setProduct({
-                  ...product,
-                  collection: e.target.value,
-                })
-              }
+              value= {product.collection|| ''}
+              onChange={e=> setProduct({
+                ...product,
+                collection: e.target.value
+              })}
             />
-
+            
             <Form.Control.Feedback type="invalid">
               Không được bỏ trống
             </Form.Control.Feedback>
@@ -175,13 +163,11 @@ const ProductEdit = () => {
               type="text"
               name="description"
               title="description"
-              value={decode(product.description || "")}
-              onChange={(e) =>
-                setProduct({
-                  ...product,
-                  description: e.target.value,
-                })
-              }
+              value={decode(product.description|| '')}
+              onChange={e=> setProduct({
+                ...product,
+                description: e.target.value
+              })}
             />
           </div>
         </div>
@@ -193,13 +179,11 @@ const ProductEdit = () => {
               type="text"
               name="price"
               title="price"
-              value={product.price || ""}
-              onChange={(e) =>
-                setProduct({
-                  ...product,
-                  price: e.target.value,
-                })
-              }
+              value={product.price||''}
+              onChange={e=> setProduct({
+                ...product,
+                price: e.target.value
+              })}
             />
           </div>
         </div>
@@ -208,18 +192,12 @@ const ProductEdit = () => {
             Kích thước
           </Form.Label>
           <div className="col-sm-10">
-            <Form.Control
-              as="textarea"
-              type="text"
-              name="size"
-              title="size"
-              value={product.size || ""}
-              onChange={(e) =>
-                setProduct({
-                  ...product,
-                  size: e.target.value,
-                })
-              }
+            <Form.Control as="textarea" type="text" name="size" title="size" 
+            value={product.size|| ''}
+            onChange={e=> setProduct({
+                ...product,
+                size: e.target.value
+            })}
             />
           </div>
         </div>
@@ -231,85 +209,64 @@ const ProductEdit = () => {
               type="text"
               name="material"
               title="material"
-              value={product.material || ""}
-              onChange={(e) =>
-                setProduct({
-                  ...product,
-                  material: e.target.value,
-                })
-              }
+              value={product.material||''}
+              onChange={e=> setProduct({
+                ...product,
+                material: e.target.value
+              })}
             />
           </div>
         </div>
-        <div className="row mb-3">
-          <Form.Label className="col-sm-2 col-form-label">Loại</Form.Label>
-          <div className="col-sm-10">
-            <Form.Control
-              as={"textarea"}
-              rows={5}
-              type="text"
-              required
-              name="selectedCategories"
-              title="Selected Categories"
-              value={product.selectCategories || ""}
-              onChange={(e) =>
-                setProduct({
-                  ...product,
-                  selectCategories: e.target.value,
-                })
-              }
-            />
-          </div>
-        </div>
+        <div className='row mb-3'>
+                  <Form.Label className='col-sm-2 col-form-label'>
+                      Loại
+                  </Form.Label>
+                  <div className='col-sm-10'>
+                      <Form.Control 
+                          as={'textarea'}
+                          rows={5}
+                          type='text'
+                          required
+                          name='selectedCategories'
+                          title='Selected Categories'
+                          value={product.selectCategories || ''}
+                          onChange={e => setProduct({
+                              ...product,
+                              selectCategories: e.target.value
+                          })}/>
+                  </div>
+              </div>
 
-        {!isEmptyOrSpaces(product.urlImage) && (
-          <div className="row mb-3">
-            <Form.Label className="col-sm-2 col-form-label">
-              Hình hiện tại
-            </Form.Label>
-            <div className="col-sm-10">
-              <img src={product.urlImage} alt={product.name} />
-            </div>
-          </div>
-        )}
-        <div className="row mb-3">
-          <Form.Label className="col-sm-2 col-form-label">
-            Chọn hình ảnh
-          </Form.Label>
-          <div className="col-sm-10">
-            <Form.Control
-              type="file"
-              name="imageFile"
-              accept="image/*"
-              title="Image File"
-              onChange={(e) => {
-                const file = e.target.files[0];
-                setProduct({
-                  ...product,
-                  urlImage: URL.createObjectURL(file),
-                });
-              }}
-            />
-          </div>
-        </div>
-        <div className="row mb-3">
-          <Form.Label className="col-sm-2 col-form-label">URL Image</Form.Label>
-          <div className="col-sm-10">
-            <Form.Control
-              type="text"
-              name="urlImage"
-              title="UrlImage"
-              value={product.urlImage || ""}
-              onChange={(e) =>
-                setProduct({
-                  ...product,
-                  urlImage: e.target.value,
-                })
-              }
-            />
-          </div>
-        </div>
-        <Form.Control.Feedback type="invalid">Không được bỏ trống</Form.Control.Feedback>
+              {!isEmptyOrSpaces(product.urlImage) && <div className="row mb-3">
+                <Form.Label className="col-sm-2 col-form-label">
+                    Hình hiện tại
+                </Form.Label>
+                <div className="col-sm-10">
+                <img src={product.urlImage} alt={product.name}/>
+
+                </div>
+                    
+
+                </div>}
+                <div className='row mb-3'>
+                  <Form.Label className='col-sm-2 col-form-label'>
+                      Chọn hình ảnh
+                  </Form.Label>
+                  <div className='col-sm-10'>
+                      <Form.Control
+                          type='file'
+                          name='imageFile'
+                          accept='image/*'
+                          title='Image File'
+                          onChange={(e) => {
+                            const file = e.target.files[0];
+                            setProduct({
+                              ...product,
+                              urlImage: URL.createObjectURL(file)
+                          })
+                          }}/>
+                  </div>
+                  </div>
         <div className="text-center">
           <Button variant="primary" type="submit">
             Lưu các thay đổi

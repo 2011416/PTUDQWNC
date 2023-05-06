@@ -76,7 +76,9 @@ const Deliveries = () => {
                       type="button"
                       className="btn btn-danger"
                       size='small'
-                      onClick={(e)=> handleDelete(e, item.id)}
+                      onClick={(e)=>{ handleDelete(e, item.id)
+                        window.location.reload(false)
+                      }}
                     >
                       Xóa
                     </button>

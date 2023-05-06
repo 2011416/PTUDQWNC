@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
-import { Button, Form } from "react-bootstrap";
-import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
+import { useEffect, useState } from 'react';
+import { Button, Form } from 'react-bootstrap';
+import { Link, Navigate, useParams } from 'react-router-dom';
 
-import { decode, isInteger } from "../../../utils/Utiles";
+import { isInteger } from '../../../utils/Utiles';
 
-import { AddOrUpdatedUser, GetUserById } from "../../../Services/Repository";
+import { AddOrUpdatedUser, GetUserById } from '../../../Services/Repository';
 
 const UserEdit = () => {
 

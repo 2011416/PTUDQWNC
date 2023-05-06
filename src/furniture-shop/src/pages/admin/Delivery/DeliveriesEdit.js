@@ -12,9 +12,10 @@ import {
 const DeliveryEdit = () => {
   const initialState = {
     id: 0,
-    userId: "",
     name: "",
     urlSlug: "",
+    date: "",
+    selectDeliveries: "",
   };
 
   const [delivery, setDelivery] = useState(initialState);
@@ -40,10 +41,8 @@ const DeliveryEdit = () => {
       let form = new FormData(e.target);
       AddOrUpdateDelivery(form).then((data) => {
         console.log(data);
-        if (data) 
-          alert("Lưu thành công!");
-        else 
-          alert("Đã xảy ra lỗi!!");
+        if (data) alert("Lưu thành công!");
+        else alert("Đã xảy ra lỗi!!");
       });
     }
 
@@ -82,26 +81,6 @@ const DeliveryEdit = () => {
           </div>
         </div>
         <div className="row mb-3">
-          <Form.Label className="col-sm-2 col-form-label">userId</Form.Label>
-          <div className="col-sm-10">
-            <Form.Control
-              type="text"
-              name="userID"
-              required
-              value={delivery.userId || ""}
-              onChange={(e) =>
-                setDelivery({
-                  ...delivery,
-                  userId: e.target.value,
-                })
-              }
-            />
-            <Form.Control.Feedback type="invalid">
-              Không được bỏ trống
-            </Form.Control.Feedback>
-          </div>
-        </div>
-        <div className="row mb-3">
           <Form.Label className="col-sm-2 col-form-label">Slug</Form.Label>
           <div className="col-sm-10">
             <Form.Control
@@ -120,7 +99,7 @@ const DeliveryEdit = () => {
             </Form.Control.Feedback>
           </div>
         </div>
-        {/* <div className="row mb-3">
+        <div className="row mb-3">
           <Form.Label className="col-sm-2 col-form-label">Thời gian</Form.Label>
           <div className="col-sm-10">
             <Form.Control as="textarea" type="text" name="date" title="date"
@@ -132,7 +111,7 @@ const DeliveryEdit = () => {
              })}
              />
           </div>
-        </div> */}
+        </div>
         <div className="text-center">
           <Button variant="primary" type="submit">
             Lưu các thay đổi

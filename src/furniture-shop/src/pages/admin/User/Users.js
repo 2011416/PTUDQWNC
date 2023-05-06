@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Table from "react-bootstrap/Table";
-import { Link, useParams, Navigate } from "react-router-dom";
-import { DeleteUser, getUserFilter, getUsers } from "../../../Services/Repository";
+import { Link } from "react-router-dom";
+import { DeleteUser, getUserFilter } from "../../../Services/Repository";
 import Loading from "../../../components/Loading";
 import UserFilterPane from "../../../components/admin/UserFilterPane";
 import { useSelector } from "react-redux";
@@ -76,7 +76,9 @@ const Users = () => {
                       type="button"
                       className="btn btn-danger"
                       size="small"
-                      onClick={(e)=> handleDelete(e, item.id)}
+                      onClick={(e)=> {handleDelete(e, item.id)
+                      window.location.reload(false)
+                      }}
                     >
                       Xóa
                     </button>
