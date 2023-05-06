@@ -49,7 +49,7 @@ const Deliveries = () => {
         <Table striped responsive bordered>
           <thead>
             <tr>
-              <th>UserId</th>
+              
               <th>Tên</th>
               <th>Slug</th>
               <th>Ngày</th>
@@ -68,10 +68,7 @@ const Deliveries = () => {
                       {item.name}
                     </Link>
                   </td>
-                  <td>
-                    {" "}
-                    <p className="text-muted">{item.name}</p>
-                  </td>
+                 
                   <td>{item.urlSlug}</td>
                   <td>{item.date}</td>
                   <td>
