@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from "react";
 import Table from "react-bootstrap/Table";
 import { Link } from "react-router-dom";
-import { DeleteProduct, getProductFilter, getProducts } from "../../../Services/Repository";
+import { DeleteProduct, getProductFilter } from "../../../Services/Repository";
 import Loading from "../../../components/Loading";
 import ProductFilterPane from "../../../components/admin/ProductFilterPane";
+import { useSelector } from "react-redux";
 
 const Products = () => {
-  const [productsList, setProductsList] = useState([]);
+  const [productsList, setProductsList] = useState([]),
+  productFilter = useSelector((state) => state.productFilter);
+console.log(productFilter);
+  // const [filterData, setFilterData]= useState([])
   const [isVisibleLoading, setIsVisibleLoading] = useState(true);
-  let k = "", p = 1, ps = 3;
-
+  let p=1, ps= 10
   const handleDelete= (e, id)=> {
     e.preventDefault();
     DeleteAnProduct(id);
@@ -26,19 +29,33 @@ const Products = () => {
 
   useEffect(() => {
     document.title = "Danh sách sản phẩm";
-    getProducts(k,ps, p).then((data)  => { 
+    
+    getProductFilter(
+   productFilter.keyword,ps,p
+  
+    ).then((data)  => { 
       if (data) 
         setProductsList(data.items);
       else setProductsList([]);
         setIsVisibleLoading(false);
     });
 
-  }, [productsList,k, ps,p]);
+  }, [productFilter.keyword,productFilter, ps,p]);
 
+  // function handleFilterChanges(newFilter){
+  //   console.log('New filter', newFilter);
+  //   setProductsList(
+  //     {
+  //       ...productsList,
+  //     keyword: newFilter.keyword
+  //     }
+  //   )
+  // }
   return (
     <>
       <h1>Danh sách sản phẩm</h1>
-      <ProductFilterPane/>
+      <ProductFilterPane />
+      {/* <ProductFilterTest onSubmit ={handleFilterChanges}/> */}
       {isVisibleLoading ? (
         <Loading />
       ) : (
@@ -46,9 +63,9 @@ const Products = () => {
           <thead>
             <tr>
               <th>Tiêu đề</th>
-              <th>Mô tả</th>
-           
+              <th>Mô tả</th>         
               <th>Giá</th>
+              <th>Xóa</th>
             </tr>
           </thead>
           <tbody>

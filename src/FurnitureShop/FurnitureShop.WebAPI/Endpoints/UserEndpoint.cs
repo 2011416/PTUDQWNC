@@ -3,6 +3,7 @@ using FurnitureShop.Core.DTO.Item;
 using FurnitureShop.Core.DTO.Query;
 using FurnitureShop.Core.Entities;
 using FurnitureShop.Services.Blogs.Categories;
+using FurnitureShop.Services.Blogs.Roles;
 using FurnitureShop.Services.Blogs.Users;
 using FurnitureShop.WebApi.Models;
 using FurnitureShop.WebAPI.Models.Category;
@@ -12,6 +13,7 @@ using FurnitureShop.WebAPI.Models.User;
 using Mapster;
 using MapsterMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SlugGenerator;
 using System.Net;
@@ -58,6 +60,20 @@ namespace FurnitureShop.WebAPI.Endpoints
                 .Produces<ApiResponse<string>>();
 
             return app;
+        }
+        private static async Task<IResult> GetFilter(IRoleRepository roleRepository)
+        {
+            var model = new UserFilterModel()
+            {
+                RoleList = (await roleRepository.GetRoleAsync())
+                .Select(a => new SelectListItem()
+                {
+                    Text = a.Name,
+                    Value = a.Id.ToString()
+                }),
+               
+            };
+            return Results.Ok(ApiResponse.Success(model));
         }
 
         private static async Task<IResult> GetAllUser(
@@ -128,7 +144,7 @@ namespace FurnitureShop.WebAPI.Endpoints
             user.Email = model.Email;
             user.phoneNumber = model.phoneNumber;
             user.Adress= model.Adress;
-            user.Role.Id= model.RoleId;
+            user.RoleId= model.RoleId;
 
             await userRepository.CreateOrUpdateUserAsync(user);
             return Results.Ok(ApiResponse.Success(mapper.Map<UserDto>(user), HttpStatusCode.Created));

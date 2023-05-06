@@ -12,10 +12,11 @@ import Cart from './pages/Cart'
 import ViewProduct from './pages/ViewProduct'
 import Contact from './pages/Contact'
 import About from './pages/About'
+import Login from './pages/Login'
+import Register from './pages/Register';
 
 import Products from './pages/admin/Product/Product';
 import Categories from './pages/admin/Category/Categories';
-import Roles from './pages/admin/Roles';
 import Users from './pages/admin/User/Users';
 
 import Edit from './pages/admin/Product/Edit';
@@ -38,6 +39,8 @@ function App() {
             <Route path='/catalog/:slug' element={<ViewProduct />}/>
             <Route path='/catalog' element={<Catalog />}/>
             <Route path='/cart' element={<Cart />}/>
+            <Route path='/login' element={<Login />}/>
+            <Route path='/register' element={<Register />}/>
             <Route path='/contact' element={<Contact />}/>
             <Route path='/about' element={<About />}/>
         </Route>
@@ -53,7 +56,6 @@ function App() {
           <Route path='/admin/products' element={<Products />} />
           <Route path='/admin/products/edit' element={<Edit />} />
           <Route path='/admin/products/edit/:id' element={<Edit />} />
-          <Route path='/admin/roles' element={<Roles />} />
           <Route path='/admin/deliveries' element={<Deliveries />} />
           <Route path='/admin/deliveries/edit' element={<DeliveryEdit />} />
           <Route path='/admin/deliveries/edit/:id' element={<DeliveryEdit />} />

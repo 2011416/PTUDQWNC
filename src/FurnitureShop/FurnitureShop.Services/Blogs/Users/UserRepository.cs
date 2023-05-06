@@ -1,4 +1,5 @@
 ﻿using FurnitureShop.Core.Contracts;
+using FurnitureShop.Core.DTO.Item;
 using FurnitureShop.Core.DTO.Query;
 using FurnitureShop.Core.Entities;
 using FurnitureShop.Data.Contexts;
@@ -23,7 +24,24 @@ namespace FurnitureShop.Services.Blogs.Users
             _context = context;
             _memoryCache = memoryCache;
         }
-
+        public async Task<IList<UserItem>> GetUserAsync(
+        CancellationToken cancellationToken = default)
+        {
+            return await _context.Set<User>()
+                .OrderBy(a => a.Name)
+                .Select(a => new UserItem()
+                {
+                    Id = a.Id,
+                    Name = a.Name,
+                    Email = a.Email,
+                    Password = a.Password,
+                    phoneNumber = a.phoneNumber,
+                    UrlSlug = a.UrlSlug,
+                    Adress = a.Adress,
+                    RoleId= a.Role.Id
+                })
+                .ToListAsync(cancellationToken);
+        }
         public async Task<IList<T>> GetUserAsync<T>(
             Func<IQueryable<User> , IQueryable<T>> mapper,
             CancellationToken cancellationToken= default)

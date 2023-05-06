@@ -40,7 +40,7 @@ namespace FurnitureShop.Services.Blogs.Deliveries
             if (!string.IsNullOrWhiteSpace(query.Keyword))
             {
                 
-                deliveryQuery = deliveryQuery.Where(d=> d.Name== query.Keyword);
+                deliveryQuery = deliveryQuery.Where(d=> d.Name.Contains(query.Keyword));
             }
             return deliveryQuery;
            

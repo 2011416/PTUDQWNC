@@ -1,28 +1,22 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from "react-redux";
-import { reset } from "../../redux/Reducer";
+import { reset, updateKeyword } from "../../redux/Redux";
+import { getDelveriesFilter } from "../../Services/Repository";
 
 const DeliveryFilterPane = () => {
     // const postFilter = useSelector(state => state.postFilter),
-    // dispatch = useDispatch(),
+    // dispatch = useDispatch(),    
     // [filter, setFilter] = useState({} 
 
 
+    const deliveriesFilter= useSelector((state)=> state.productFilter),
+    dispatch= useDispatch(),
+    [filter, setFilter]= useState([]);
 
-    const current = new Date(),
-    [keyword, setKeyword] = useState(''),
-    [authorId, setAuthorId] = useState(''),
-    [categoryId, setCategoryId] = useState(''),
-    [year, setYear] = useState(current.getFullYear()),
-    [month, setMonth] = useState(current.getMonth()),
-    [postFilter, setPostFilter] = useState({
-        authorList: [],
-        categoryList: [],
-        monthList: [],
-    });
+    
 
     const handleReset = (e) => {
         dispatchEvent(reset());
@@ -31,7 +25,17 @@ const DeliveryFilterPane = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
     };
-
+    useEffect(()=> {
+        getDelveriesFilter().then((data)=>{
+            if(data){
+                setFilter(data)
+            }
+            else{
+                setFilter([])
+            }
+        }
+        )
+    })
     return (
         <Form method="get"
         onSubmit={handleSubmit}
@@ -44,12 +48,15 @@ const DeliveryFilterPane = () => {
                 type='text'
                 placeholder="Nhập từ khóa..."
                 name="keyword"
-                value={keyword}
-                onChange={e => setKeyword(e.target.value)} />                
-        </Form.Group>
+                value={deliveriesFilter.keyword}
+                onChange={e => dispatch(updateKeyword(e.target.value))} />                
+        </Form.Group>  
         <Form.Group className='col-auto'>
             <Button variant="primary" type='submit'>
                 Tìm/Lọc
+            </Button>
+            <Button variant="warning mx-2" onClick={handleReset}>
+                    Bỏ lọc
             </Button>
             <Link to='/admin/deliveries/edit' className='btn btn-success ms-2'>Thêm mới</Link>
             </Form.Group>

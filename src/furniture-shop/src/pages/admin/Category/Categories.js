@@ -1,27 +1,43 @@
 import React, { useEffect, useState } from "react";
 import Table from "react-bootstrap/Table";
 import { Link } from "react-router-dom";
-import { getCategories } from "../../../Services/Repository";
+import { deleteCategory, getCategories, getCategoriesFilter } from "../../../Services/Repository";
 import Loading from "../../../components/Loading";
 import CategoryFilterPane from "../../../components/admin/CategoryFilterPane";
-import { deleteCategory } from "../../../Services/Repository";
+import { DeleteCategory } from "../../../Services/Repository";
+import { useSelector } from "react-redux";
 
 const Categories = () => {
   const [categoriesList, setCategoriesList] = useState([]);
+  const categoriesFilter= useSelector((state)=> state.productFilter)
   const [isVisibleLoading, setIsVisibleLoading] = useState(true);
   let k = "",
     p = 1,
     ps = 10;
 
+    const handleDelete= (e, id)=> {
+      e.preventDefault();
+      DeleteAnCategory(id);
+      async function DeleteAnCategory(id){
+        if(window.confirm("Bạn có chắc xóa chủ đề này")){
+          const response = await DeleteCategory(id);
+          if(!response)
+            alert("Xóa thành công")
+            else
+            alert("Đã xảy ra lỗi khi xóa")
+        }
+      }
+    }
+
   useEffect(() => {
     document.title = "Danh sách chủ đề";
-    getCategories(k, ps, p).then((data) => {
-      if (data) setCategoriesList(data.items);
+    getCategoriesFilter(categoriesFilter.keyword, ps, p).then((data) => {
+      if (data) 
+      setCategoriesList(data.items);
       else setCategoriesList([]);
       setIsVisibleLoading(false);
     });
-  }, [k, ps, p]);
-  console.log(categoriesList.items);
+  }, [categoriesFilter.keyword, categoriesFilter,ps, p]);
 
   return (
     <>
@@ -35,8 +51,8 @@ const Categories = () => {
             <tr>
               <th>Tiêu đề</th>
               <th>Mô tả</th>
-
               <th>Slug</th>
+              <th>Xóa</th>
             </tr>
           </thead>
           <tbody>
@@ -61,6 +77,7 @@ const Categories = () => {
                       type="button"
                       className="btn btn-danger"
                       size='small'
+                      onClick={(e)=> handleDelete(e, item.id)}
                     >
                       Xóa
                     </button>

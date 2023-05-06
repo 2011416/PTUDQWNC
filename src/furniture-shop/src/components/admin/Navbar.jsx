@@ -27,12 +27,6 @@ const Navbar = () => {
 							</Link>
 						</Nav.Item>
 						<Nav.Item>
-							<Link to='/admin/roles'
-								className='nav-link text-dark'>
-								Role
-							</Link>
-						</Nav.Item>
-						<Nav.Item>
 							<Link to='/admin/products'
 								className='nav-link text-dark'>
 								Sản phẩm
@@ -43,7 +37,16 @@ const Navbar = () => {
 								className='nav-link text-dark'>
 								Đơn
 							</Link>
-						</Nav.Item>								
+						</Nav.Item>	
+						<Nav.Item>
+						<div className="header__menu__right">
+                         <div className="header__menu__item header__menu__right__item">
+                            <Link to="/login">
+                          <i className="bx bx-user">Đăng nhập</i>
+                            </Link>
+                         </div>
+                     </div>
+						</Nav.Item>									
 					</Nav>
 				</Nb.Collapse>
 			</div>

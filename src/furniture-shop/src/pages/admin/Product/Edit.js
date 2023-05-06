@@ -16,8 +16,9 @@ const ProductEdit = () => {
     size: "",
     material: "",
     selectCategories: "",
-    imageUrl:"",
+    urlImage:"",
     collection:"",
+    imageFile:"",
     userId:0
   };
 
@@ -28,7 +29,7 @@ const ProductEdit = () => {
 
   useEffect(() => {
     document.title = "Thêm/cập nhật sản phẩm";
-    GetProductById(id).then(data=> {
+    GetProductById(id).then((data)=> {
         if(data){
             setProduct({
                 ...data,
@@ -55,7 +56,7 @@ const ProductEdit = () => {
       let form = new FormData(e.target);
     AddOrUpdatedProduct(form).then(data => {
         console.log(data)
-        if(data)
+        if(!data)
             alert('Lưu thành công!');
         else
             alert('Đã xảy ra lỗi!!');
@@ -65,7 +66,7 @@ const ProductEdit = () => {
 }
 if(id&& !isInteger(id))
     return(
-        <Navigate to = {`/400?redirectTo=/admin/posts`}/>
+        <Navigate to = {`/400?redirectTo=/admin/products`}/>
          
     )
 
@@ -236,12 +237,12 @@ if(id&& !isInteger(id))
                   </div>
               </div>
 
-              {!isEmptyOrSpaces(product.imageUrl) && <div className="row mb-3">
+              {!isEmptyOrSpaces(product.urlImage) && <div className="row mb-3">
                 <Form.Label className="col-sm-2 col-form-label">
                     Hình hiện tại
                 </Form.Label>
                 <div className="col-sm-10">
-                <img src={`https://localhost:7226/${product.imageUrl}`} alt={product.name}/>
+                <img src={product.urlImage} alt={product.name}/>
 
                 </div>
                     
@@ -257,17 +258,20 @@ if(id&& !isInteger(id))
                           name='imageFile'
                           accept='image/*'
                           title='Image File'
-                          onChange={e => setProduct({
+                          onChange={(e) => {
+                            const file = e.target.files[0];
+                            setProduct({
                               ...product,
-                              imageFile: e.target.files[0]
-                          })}/>
+                              urlImage: URL.createObjectURL(file)
+                          })
+                          }}/>
                   </div>
                   </div>
         <div className="text-center">
           <Button variant="primary" type="submit">
             Lưu các thay đổi
           </Button>
-          <Link to="/admin/categories" className="btn btn-danger ms-2">
+          <Link to="/admin/products" className="btn btn-danger ms-2">
             Hủy và quay lại
           </Link>
         </div>
