@@ -21,7 +21,7 @@ const Categories = () => {
       async function DeleteAnCategory(id){
         if(window.confirm("Bạn có chắc xóa chủ đề này")){
           const response = await DeleteCategory(id);
-          if(!response)
+          if(response)
             alert("Xóa thành công")
             else
             alert("Đã xảy ra lỗi khi xóa")

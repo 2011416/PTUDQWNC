@@ -19,7 +19,7 @@ const DeliveryFilterPane = () => {
     
 
     const handleReset = (e) => {
-        dispatchEvent(reset());
+        dispatch(reset());
     }
 
     const handleSubmit = (e) => {
@@ -52,9 +52,9 @@ const DeliveryFilterPane = () => {
                 onChange={e => dispatch(updateKeyword(e.target.value))} />                
         </Form.Group>  
         <Form.Group className='col-auto'>
-            <Button variant="primary" type='submit'>
+            {/* <Button variant="primary" type='submit'>
                 Tìm/Lọc
-            </Button>
+            </Button> */}
             <Button variant="warning mx-2" onClick={handleReset}>
                     Bỏ lọc
             </Button>

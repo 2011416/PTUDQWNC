@@ -19,7 +19,7 @@ console.log(productFilter);
     async function DeleteAnProduct(id){
       if(window.confirm("Bạn có chắc xóa sản phẩm này")){
         const response = await DeleteProduct(id);
-        if(!response)
+        if(response)
           alert("Xóa thành công")
           else
           alert("Đã xảy ra lỗi khi xóa")
@@ -92,7 +92,11 @@ console.log(productFilter);
                       type="button"
                       className="btn btn-danger"
                       size='small'
-                      onClick={(e)=> handleDelete(e, item.id)}
+                      onClick={(e)=> {
+                        
+                        handleDelete(e, item.id)
+                        window.location.reload(false)
+                      }}
                     >
                       Xóa
                     </button>

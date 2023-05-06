@@ -48,7 +48,7 @@ const ProductEdit = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
    if(e.currentTarget.checkValidity() ===false){
-    e.StopPropagation();
+    // e.StopPropagation();
       setValidated(true);
    }
 
@@ -56,7 +56,7 @@ const ProductEdit = () => {
       let form = new FormData(e.target);
     AddOrUpdatedProduct(form).then(data => {
         console.log(data)
-        if(!data)
+        if(data)
             alert('Lưu thành công!');
         else
             alert('Đã xảy ra lỗi!!');
