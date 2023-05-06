@@ -25,12 +25,15 @@ namespace FurnitureShop.WebAPI.Endpoints
             .WithName("GetAllCategories")
             .Produces<ApiResponse<CategoryDto>>();
             routeGroupBuilder.MapGet("/", GetCategories)
-            .WithName("GetCategories")
-            .Produces<ApiResponse<PaginationResult<CategoryDto>>>();
+
+    .WithName("GetCategories")
+    .Produces<ApiResponse<PaginationResult<CategoryDto>>>();
+
+           
             routeGroupBuilder.MapGet("/id/{id:int}", GetDetailCategoryById)
             .WithName("GetDetailCategoryById")
             .Produces<ApiResponse<CategoryDto>>();
-            routeGroupBuilder.MapGet("/{slug:regex(^[a-z0-9_-]+$)}", GetDetailCategoryBySlug)
+            routeGroupBuilder.MapGet("/slug/{slug:regex(^[a-z0-9_-]+$)}", GetDetailCategoryBySlug)
             .WithName("GetDetailCategoryBySlug")
             .Produces<ApiResponse<CategoryDto>>();
             routeGroupBuilder.MapDelete("/{id:int}", DeleteCategory)

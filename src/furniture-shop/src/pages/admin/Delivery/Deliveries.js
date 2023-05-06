@@ -2,10 +2,13 @@ import React, { useEffect, useState } from "react";
 import Table from "react-bootstrap/Table";
 import { Link } from "react-router-dom";
 import Loading from "../../../components/Loading";
-import { DeleteDelivey, getDeliveries } from "../../../Services/Repository";
+import { DeleteDelivey, getDeliveries, getDelveriesFilter } from "../../../Services/Repository";
 import DeliveryFilterPane from "../../../components/admin/DeliveryFilterPane";
+import { useSelector } from "react-redux";
 
 const Deliveries = () => {
+  const deliveriesFilter= useSelector((state)=> state.productFilter)
+
   const [deliveriesList, setDeliveriesList] = useState([]);
   const [isVisibleLoading, setIsVisibleLoading] = useState(true);
   let k = "",
@@ -28,12 +31,12 @@ const Deliveries = () => {
 
     useEffect(() => {
     document.title = "Danh sách đơn";
-    getDeliveries(k, ps, p).then((data) => {
+    getDelveriesFilter(deliveriesFilter.keyword, ps, p).then((data) => {
       if (data) setDeliveriesList(data.items);
       else setDeliveriesList([]);
       setIsVisibleLoading(false);
     });
-  }, [k, ps, p]);
+  }, [deliveriesFilter,k, ps, p]);
   console.log(deliveriesList.items);
 
   return (
@@ -46,7 +49,7 @@ const Deliveries = () => {
         <Table striped responsive bordered>
           <thead>
             <tr>
-              <th>UserId</th>
+              
               <th>Tên</th>
               <th>Slug</th>
               <th>Ngày</th>
@@ -65,10 +68,7 @@ const Deliveries = () => {
                       {item.name}
                     </Link>
                   </td>
-                  <td>
-                    {" "}
-                    <p className="text-muted">{item.name}</p>
-                  </td>
+                 
                   <td>{item.urlSlug}</td>
                   <td>{item.date}</td>
                   <td>

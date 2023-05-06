@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Globalization;
 
 namespace FurnitureShop.WebAPI.Models.Product
 {
@@ -6,5 +7,6 @@ namespace FurnitureShop.WebAPI.Models.Product
     {
         //public int UserId { get; set; }
         public string Keyword { get; set; }
+        public IEnumerable<SelectListItem> UserList { get; set; }
     }
 }

@@ -49,11 +49,19 @@ const ProductEdit = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let form = new FormData(e.target);
-    AddOrUpdatedProduct(form).then((data) => {
-      console.log(data);
-      if (data) alert("Lưu thành công!");
-      else alert("Đã xảy ra lỗi!!");
+   if(e.currentTarget.checkValidity() ===false){
+    // e.StopPropagation();
+      setValidated(true);
+   }
+
+    else{
+      let form = new FormData(e.target);
+    AddOrUpdatedProduct(form).then(data => {
+        console.log(data)
+        if(data)
+            alert('Lưu thành công!');
+        else
+            alert('Đã xảy ra lỗi!!');
     });
   };
   if (id && !isInteger(id))

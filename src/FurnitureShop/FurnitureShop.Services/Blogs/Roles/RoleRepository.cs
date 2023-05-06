@@ -1,4 +1,5 @@
-﻿using FurnitureShop.Core.DTO.Query;
+﻿using FurnitureShop.Core.DTO.Item;
+using FurnitureShop.Core.DTO.Query;
 using FurnitureShop.Core.Entities;
 using FurnitureShop.Data.Contexts;
 using Microsoft.EntityFrameworkCore;
@@ -29,6 +30,20 @@ namespace FurnitureShop.Services.Blogs.Roles
             IQueryable<Role> roles = _context.Set<Role>()
                 .Include(r=>r.Users);
             return await mapper(roles).ToListAsync(cancellationToken);
+        }
+        public async Task<IList<RoleItem>> GetRoleAsync(
+        CancellationToken cancellationToken = default)
+        {
+            return await _context.Set<Role>()
+                .OrderBy(a => a.Name)
+                .Select(a => new RoleItem()
+                {
+                    Id = a.Id,
+                    Name = a.Name,
+                    Description = a.Description
+               
+                })
+                .ToListAsync(cancellationToken);
         }
         private IQueryable<Role> FilterRole(RoleQuery query)
         {

@@ -10,6 +10,7 @@ using FurnitureShop.WebAPI.Models.Product;
 using FurnitureShop.WebAPI.Models.User;
 using Mapster;
 using MapsterMapper;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Hosting;
 using SlugGenerator;
 using System.Net;
@@ -31,7 +32,12 @@ namespace FurnitureShop.WebAPI.Endpoints
             routeGroupBuilder.MapGet("/{id:int}", GetDetailProductById)
            .WithName("GetDetailProductById")
            .Produces<ApiResponse<ProductDto>>();
-
+            routeGroupBuilder.MapGet("/get-product-filter", GetFilteredProducts)
+              .WithName("GetFilteredProduct")
+              .Produces<ApiResponse<PaginationResult<ProductDto>>>();
+            routeGroupBuilder.MapGet("/get-filter", GetFilter)
+               .WithName("GetFilter")
+               .Produces<ApiResponse<ProductFilterModel>>();
 
             routeGroupBuilder.MapGet("/byslug/{slug:regex(^[a-z0-9_-]+$)}", GetDetailProductBySlug)
                 .WithName("GetDetailProductBySlug")
@@ -62,7 +68,26 @@ namespace FurnitureShop.WebAPI.Endpoints
             var product = await productRepository.GetProductAsync(product => product.ProjectToType<ProductDto>());
             return Results.Ok(ApiResponse.Success(product));
         }
-        public static async Task<IResult> GetProducts(
+        private static async Task<IResult> GetFilter(IUserRepository userRepository)
+        {
+            var model = new ProductFilterModel()
+            {
+                UserList = (await userRepository.GetUserAsync())
+                .Select(a => new SelectListItem()
+                {
+                    Text = a.Name,
+                    Value = a.Id.ToString()
+                })
+               
+            };
+            return Results.Ok(ApiResponse.Success(model));
+
+
+          
+
+        }
+
+        private static async Task<IResult> GetProducts(
          [AsParameters] ProductFilterModel model,
          IProductRepository productRepository,
          IMapper mapper)
@@ -77,6 +102,20 @@ namespace FurnitureShop.WebAPI.Endpoints
             return Results.Ok(ApiResponse.Success(pagingnationResult));
         }
 
+        private static async Task<IResult> GetFilteredProducts(
+           [AsParameters] ProductFilterModel model,
+           IProductRepository productRepository)
+        {
+            var productQuery = new ProductQuery()
+            {
+                Keyword = model.Keyword,
+                
+               
+            }; var productList = await productRepository.GetPagedProductAsync(productQuery, model,
+                posts => posts.ProjectToType<ProductDto>());
+            var paginationResult = new PaginationResult<ProductDto>(productList);
+            return Results.Ok(ApiResponse.Success(paginationResult));
+        }
         private static async Task<IResult> GetDetailProductById(
       int id, IProductRepository productRepository, IMapper mapper)
         {

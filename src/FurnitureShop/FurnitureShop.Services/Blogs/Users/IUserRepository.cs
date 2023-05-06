@@ -1,4 +1,5 @@
 ﻿using FurnitureShop.Core.Contracts;
+using FurnitureShop.Core.DTO.Item;
 using FurnitureShop.Core.DTO.Query;
 using FurnitureShop.Core.Entities;
 using System;
@@ -26,6 +27,7 @@ namespace FurnitureShop.Services.Blogs.Users
         Task<bool> CreateOrUpdateUserAsync(User user, CancellationToken cancellationToken = default);
         Task<bool> IsSlugExistedAsync(int id, string slug, CancellationToken cancellationToken = default);
         Task<bool> DeleteUserByIdAsync(int id, CancellationToken cancellationToken = default);
-
+        Task<IList<UserItem>> GetUserAsync(
+        CancellationToken cancellationToken = default);
     }
 }

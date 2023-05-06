@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
 import Table from "react-bootstrap/Table";
 import { Link, useParams, Navigate } from "react-router-dom";
-import { DeleteUser, getUsers } from "../../../Services/Repository";
+import { DeleteUser, getUserFilter, getUsers } from "../../../Services/Repository";
 import Loading from "../../../components/Loading";
 import UserFilterPane from "../../../components/admin/UserFilterPane";
+import { useSelector } from "react-redux";
 
 const Users = () => {
   const [usersList, setUsersList] = useState([]);
+  const userFilter = useSelector((state)=> state.productFilter)
   const [isVisibleLoading, setIsVisibleLoading] = useState(true);
-  let k = "", p = 1, ps = 3;
+  let k = "", p = 1, ps = 10;
 
   const handleDelete= (e, id)=> {
     e.preventDefault();
@@ -26,13 +28,13 @@ const Users = () => {
 
   useEffect(() => {
     document.title = "Danh sách tài khoản";
-    getUsers(k,ps, p).then((data) => {
+    getUserFilter(userFilter.keyword,ps, p).then((data) => {
       if (data) 
       setUsersList(data.items);
       else setUsersList([]);
       setIsVisibleLoading(false);
     });
-  }, [usersList,k, ps,p]);
+  }, [userFilter.keyword, userFilter,k, ps,p]);
 
   return (
     <>
@@ -46,8 +48,8 @@ const Users = () => {
             <tr>
               <th>Tên</th>
               <th>Email</th>
-              <th>Số điện thoại</th>
               <th>Địa chỉ</th>
+              <th>Số điện thoại</th>
               <th>Slug</th>
               <th>Xóa</th>
             </tr>
@@ -66,7 +68,7 @@ const Users = () => {
                     <p className="text-muted">{item.name}</p>
                   </td>
                   <td>{item.email}</td>
-                  <td>{item.address}</td>
+                  <td>{item.adress}</td>
                   <td>{item.phoneNumber}</td>
                   <td>{item.urlSlug}</td>
                   <td>
