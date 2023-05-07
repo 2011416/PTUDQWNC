@@ -12,9 +12,16 @@ const About = () => {
     <Helmet title="Giới thiệu">
     <div className="about-page">
       <h1>About Us</h1>
-      <p>We are a family-owned furniture shop that has been in business for over 50 years. Our mission is to provide high-quality furniture at affordable prices, with exceptional customer service.</p>
-      <p>Our selection includes a wide range of styles, from classic to contemporary, and we offer both indoor and outdoor furniture.</p>
-      <p>Thank you for choosing us for all of your furniture needs!</p>
+       <h1>...............................................</h1>
+       <h1>LỊCH SỬ HÌNH THÀNH</h1>
+      <p>Ra đời từ ý tưởng tạo nên sự khác biệt, FurnitureShop đã giữ vững và phát triển trở thành vị trí hàng đầu trong thị trường nội thất Việt Nam.</p>
+      <p>Đến nay, FurnitureShop đã có nhiều cửa hàng quy mô và chuyên nghiệp tại các thành phố lớn là Hà Nội và TP.HCM, Bình Dương.</p>
+             <h1>...............................................</h1>
+       <h1>Giá trị và sự khác biệt</h1>
+      <p>Với mong muốn phát triển thương hiệu Việt bằng nội lực, FurnitureShop đã chú trọng vào thiết kế và sản xuất nội thất trong nước. Danh mục sản phẩm của FurnitureShop thường xuyên được đổi mới và cập nhật, liên tục cung cấp cho khách hàng các dòng sản phẩm theo xu hướng mới nhất. Do chính người Việt thiết kế và sản xuất, nội thất thương hiệu FurnitureShop luôn phù hợp với cuộc sống Á Đông, đem đến sự tiện nghi hoàn hảo trong mọi không gian sống.</p>
+      <h1>...............................................</h1>
+       <h1>Chất lượng và dịch vụ</h1>
+      <p>Chất lượng của nguyên vật liệu, phụ kiện và quy trình sản xuất đều được kiểm định và giám sát chặt chẽ bởi hệ thống quản lý chất lượng ISO 9001. Sản phẩm của FurnitureShop được thiết kế theo định hướng công năng sử dụng, thẩm mỹ và chất lượng. Trong những năm gần đây, thương hiệu luôn hướng đến xu hướng thiết kế xanh nhằm đóng góp không chỉ một không gian sống tiện nghi mà còn là một môi trường sống trong lành cho người sử dụng và cộng đồng.</p>
     </div>
 
     <Link to="/catalog">
