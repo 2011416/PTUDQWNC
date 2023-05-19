@@ -56,7 +56,7 @@ const Home = () => {
              <Section>
                 <SectionBody>
                     <Grid
-                        col={3}
+                        col={4}
                         mdCol={2}
                         smCol={1}
                         gap={20}
