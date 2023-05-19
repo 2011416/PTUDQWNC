@@ -1,0 +1,12 @@
+import { configureStore } from '@reduxjs/toolkit'
+
+import productModalReducer from './product-modal/productModalSlice'
+
+import cartItemsSlide from './shopping-cart/cartItemsSlide.js'
+
+export const store = configureStore({
+    reducer: {
+        productModal: productModalReducer,
+        cartItems: cartItemsSlide
+    },
+})

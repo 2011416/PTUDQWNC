@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import { useDispatch } from 'react-redux'
 
-import { addItem } from '../redux/shopping-cart/cartItemsSlide'
+import { addItem } from '../redux/shopping-cart/cartItemsSlide.js'
 import { remove } from '../redux/product-modal/productModalSlice'
 
 
